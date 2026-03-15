@@ -51,6 +51,28 @@ All four agents in `.claude/agents/` are scoped to this project:
 
 ## Key Docs
 - Design spec: `docs/specs/2026-03-15-portfolio-design.md`
+- Implementation plan: `docs/superpowers/plans/2026-03-15-portfolio-build.md`
+
+## Build Progress (as of 2026-03-15)
+
+| Task | Description | Status |
+|------|-------------|--------|
+| 1 | Scaffold Next.js 14 + install dependencies | ✅ Done |
+| 2 | Design system (tailwind.config.ts, globals.css, layout.tsx, tokens.ts) | ✅ Done |
+| 3 | Shared UI primitives (Badge, PillTag, FloatingCTA) | ✅ Done |
+| 4 | Content file (src/lib/content.ts) | ✅ Done |
+| 5 | Sticky Nav (src/components/layout/Nav.tsx) | ✅ Done |
+| 6 | Hero section | ⬜ Pending |
+| 7 | Tech Stack Strip | ⬜ Pending |
+| 8 | Services section | ⬜ Pending |
+| 9 | Case Study section | ⬜ Pending |
+| 10 | Testimonial section | ⬜ Pending |
+| 11 | About section | ⬜ Pending |
+| 12 | Contact/CTA section | ⬜ Pending |
+| 13 | SEO, sitemap & favicon | ⬜ Pending |
+| 14 | Deploy to Vercel | ⬜ Pending |
+
+**Next session:** Resume from Task 6 — `/build-section hero`
 
 ## Important Rules
 - No emoji in JSX/components — use Lucide icons

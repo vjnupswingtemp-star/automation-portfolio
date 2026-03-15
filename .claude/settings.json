@@ -29,7 +29,12 @@
       "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir --no-import-alias --use-npm)",
       "Bash(npx create-next-app@14 portfolio-app --typescript --tailwind --eslint --app --src-dir --no-import-alias --use-npm)",
       "Bash(npm install:*)",
-      "Bash(timeout 20 npm run dev)"
+      "Bash(timeout 20 npm run dev)",
+      "Bash(timeout 30 npm run dev)",
+      "Bash(node -e \"require\\(''''framer-motion''''\\)\")",
+      "Bash(npx tsc:*)",
+      "Bash(grep -r export.*meta c:/Users/ASUS/n8n_project/Portfolio/src/lib/content)",
+      "Bash(grep -E \"emoji|[🌀🎯🚀✨💡🔥⚡🎨🌟👋]\" \"c:/Users/ASUS/n8n_project/Portfolio/src/components/ui\"/*.tsx)"
     ],
     "additionalDirectories": [
       "C:\\Users\\ASUS\\.claude",
