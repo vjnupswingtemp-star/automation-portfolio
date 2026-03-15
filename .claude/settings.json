@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo:*)",
+      "Bash(curl -s https://api.github.com/repos/msitarzewski/agency-agents)",
+      "Bash(curl -s https://api.github.com/repos/msitarzewski/agency-agents/contents/)",
+      "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f[''''name''''], f[''''type'''']\\) for f in data]\")",
+      "Bash(curl -s https://raw.githubusercontent.com/msitarzewski/agency-agents/main/README.md)",
+      "Bash(curl -s https://api.github.com/repos/msitarzewski/agency-agents/contents/design)",
+      "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f[''''name'''']\\) for f in data]\")",
+      "Read(//c/Users/ASUS/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.2/skills/brainstorming/**)",
+      "Bash(bash \"C:/Users/ASUS/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.2/scripts/start-server.sh\" --project-dir \"c:/Users/ASUS/n8n_project/Portfolio\")",
+      "Read(//c/Users/ASUS/.claude/**)",
+      "Bash(bash \"C:/Users/ASUS/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.2/skills/brainstorming/scripts/start-server.sh\" --project-dir \"c:/Users/ASUS/n8n_project/Portfolio\")",
+      "Bash(curl -s https://raw.githubusercontent.com/msitarzewski/agency-agents/main/design/design-ui-designer.md -o ~/.claude/agents/design-ui-designer.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/msitarzewski/agency-agents/main/design/design-ux-architect.md -o ~/.claude/agents/design-ux-architect.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/msitarzewski/agency-agents/main/engineering/engineering-frontend-developer.md -o ~/.claude/agents/engineering-frontend-developer.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/msitarzewski/agency-agents/main/design/design-visual-storyteller.md -o ~/.claude/agents/design-visual-storyteller.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/msitarzewski/agency-agents/main/design/design-whimsy-injector.md -o ~/.claude/agents/design-whimsy-injector.md)",
+      "Bash(curl -s https://api.github.com/repos/msitarzewski/agency-agents/contents/engineering)",
+      "Bash(mkdir -p \"c:/Users/ASUS/n8n_project/Portfolio/.claude/agents\")",
+      "Bash(mkdir -p \"c:/Users/ASUS/n8n_project/Portfolio/.claude/commands\")",
+      "Bash(cp ~/.claude/agents/engineering-frontend-developer.md \"c:/Users/ASUS/n8n_project/Portfolio/.claude/agents/frontend-developer.md\")",
+      "Bash(cp ~/.claude/agents/design-ui-designer.md \"c:/Users/ASUS/n8n_project/Portfolio/.claude/agents/ui-designer.md\")",
+      "Bash(cp ~/.claude/agents/design-ux-architect.md \"c:/Users/ASUS/n8n_project/Portfolio/.claude/agents/ux-architect.md\")",
+      "Bash(cp ~/.claude/agents/design-whimsy-injector.md \"c:/Users/ASUS/n8n_project/Portfolio/.claude/agents/whimsy-injector.md\")",
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir --no-import-alias)",
+      "Bash(printf 'n\\\\n')",
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir --no-import-alias --use-npm)",
+      "Bash(npx create-next-app@14 portfolio-app --typescript --tailwind --eslint --app --src-dir --no-import-alias --use-npm)",
+      "Bash(npm install:*)",
+      "Bash(timeout 20 npm run dev)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\ASUS\\.claude",
+      "c:\\Users\\ASUS\\n8n_project\\Portfolio\\.superpowers\\brainstorm\\63-1773548826",
+      "c:\\Users\\ASUS\\n8n_project\\Portfolio\\.claude\\commands"
+    ]
+  }
+}
