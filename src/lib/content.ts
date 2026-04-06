@@ -208,7 +208,7 @@ export const testimonial = {
   role: 'Business Owner',
   business: 'LJCI Merchandising',
   project: 'Automated Document Generation (Procurement)',
-  image: '/images/lyndon-joy.jfif'
+  image: '/images/lyndon-joy.jpg'
 }
 
 export const about = {

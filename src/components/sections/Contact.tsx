@@ -8,7 +8,7 @@ import { focusRing } from '@/lib/tokens'
 
 // Split headline to italicize the accent word "automate"
 export function Contact() {
-  const shouldReduce = useReducedMotion()
+  const shouldReduce = false // useReducedMotion()
 
   return (
     <section id="contact" className="relative bg-near-black py-16 md:py-10 overflow-hidden">
@@ -28,7 +28,7 @@ export function Contact() {
 
       <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
         <motion.div
-          initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={shouldReduce ? { duration: 0 } : { duration: 0.7, ease: 'easeOut' as const }}

@@ -12,7 +12,7 @@ type Message = {
 }
 
 export function ChatWidget() {
-  const shouldReduce = useReducedMotion()
+  const shouldReduce = false // useReducedMotion()
   const [isOpen, setIsOpen] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
@@ -83,9 +83,9 @@ export function ChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 1, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            exit={{ opacity: 1, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className={`fixed bottom-24 right-6 sm:bottom-28 sm:right-8 bg-white rounded-3xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden z-[100] transition-[width,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isMaximized 

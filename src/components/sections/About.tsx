@@ -30,7 +30,7 @@ function TeamPhoto() {
 }
 
 export function About() {
-  const shouldReduce = useReducedMotion()
+  const shouldReduce = false // useReducedMotion()
 
   return (
     <section id="about" className="relative overflow-hidden py-16 md:py-20 bg-white">
@@ -44,7 +44,7 @@ export function About() {
         {/* Section label (Neo-Brutalist Y2K Badge) */}
         <div className="mb-16 md:mb-24 flex justify-between items-end">
           <motion.div
-            initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 10 }}
+            initial={shouldReduce ? { opacity: 1 } : { opacity: 1, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
@@ -58,7 +58,7 @@ export function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 items-center">
           {/* Bio + skills */}
           <motion.div
-            initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={shouldReduce ? { duration: 0 } : { duration: 0.6, delay: 0.1, ease: 'easeOut' as const }}
@@ -75,7 +75,7 @@ export function About() {
 
           {/* Team photo */}
           <motion.div
-            initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={shouldReduce ? { duration: 0 } : { duration: 0.6, delay: 0.2, ease: 'easeOut' as const }}

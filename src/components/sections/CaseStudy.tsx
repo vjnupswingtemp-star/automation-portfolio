@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export function CaseStudy() {
-  const shouldReduce = useReducedMotion()
+  const shouldReduce = false // useReducedMotion()
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handleNext = () => {
@@ -31,7 +31,7 @@ export function CaseStudy() {
         {/* Section Header */}
         <div className="mb-12 md:mb-16 flex justify-between items-end">
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 1, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             className="mb-6"
@@ -51,7 +51,7 @@ export function CaseStudy() {
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-16 gap-8">
           <motion.h2
             key={currentIndex} // Re-animate on change
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="font-serif font-normal text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-near-black leading-[1.05] tracking-tight max-w-5xl"

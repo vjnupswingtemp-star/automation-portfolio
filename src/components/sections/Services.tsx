@@ -24,7 +24,7 @@ interface CustomServiceItem {
 }
 
 export function Services() {
-  const shouldReduce = useReducedMotion()
+  const shouldReduce = false // useReducedMotion()
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
@@ -81,9 +81,9 @@ export function Services() {
                 return (
                   <motion.div
                     key={currentIndex}
-                    initial={{ opacity: 0, x: 50, filter: 'blur(3px)' }}
-                    animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, x: -50, filter: 'blur(3px)' }}
+                    initial={{ opacity: 1, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 1, x: -50 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="w-full shrink-0 flex justify-center px-2 md:px-4 py-4"
                   >
@@ -124,9 +124,9 @@ export function Services() {
               return (
                 <motion.div
                   key={currentIndex}
-                  initial={{ opacity: 0, x: 50, filter: 'blur(3px)' }}
-                  animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, x: -50, filter: 'blur(3px)' }}
+                  initial={{ opacity: 1, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 1, x: -50 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="w-full shrink-0 flex justify-center px-2 md:px-4 py-4"
                 >

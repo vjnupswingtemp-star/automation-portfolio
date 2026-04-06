@@ -4,7 +4,7 @@ import { testimonial } from '@/lib/content'
 import Image from 'next/image'
 
 export function Testimonial() {
-  const shouldReduce = useReducedMotion()
+  const shouldReduce = false // useReducedMotion()
 
   return (
     <section id="testimonial" className="relative overflow-hidden flex items-center justify-center py-16 md:py-20 border-y border-gray-200/60 bg-[#FAFAFA]">
@@ -16,7 +16,7 @@ export function Testimonial() {
         
         <div className="mb-10 lg:mb-12 flex justify-center lg:justify-start items-end">
           <motion.div 
-            initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 10 }}
+            initial={shouldReduce ? { opacity: 1 } : { opacity: 1, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
@@ -27,7 +27,7 @@ export function Testimonial() {
         </div>
 
         <motion.div
-          initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={shouldReduce ? { duration: 0 } : { duration: 0.7, delay: 0.2, ease: 'easeOut' as const }}
