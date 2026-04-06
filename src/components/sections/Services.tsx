@@ -37,12 +37,11 @@ export function Services() {
   return (
     <section id="services" className="relative overflow-hidden py-16 md:py-20">
 
-      {/* Background Image: High-Definition Unsplash Sky (Bypasses Next.js Image Config) */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1513224502586-d1e602410265?q=100&w=3000&auto=format&fit=crop')", // High quality sky with clouds
-          backgroundPosition: "center 30%"
+          backgroundImage: "url('/images/sky_bg.png')",
+          backgroundPosition: "center"
         }}
         aria-hidden="true"
       />
