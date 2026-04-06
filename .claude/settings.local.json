@@ -8,7 +8,13 @@
       "mcp__n8n-mcp__n8n_update_partial_workflow",
       "mcp__n8n-mcp__n8n_validate_workflow",
       "mcp__n8n-mcp__n8n_update_full_workflow",
-      "mcp__n8n-mcp__tools_documentation"
+      "mcp__n8n-mcp__tools_documentation",
+      "Bash(npm audit:*)",
+      "Bash(npm view:*)",
+      "Bash(node -e \"const v=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); console.log\\(v.filter\\(x=>x.startsWith\\('15.'\\)\\).slice\\(-5\\)\\)\")",
+      "Bash(npm uninstall:*)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/eslint-plugin-react/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('c:/Users/ASUS/n8n_project/Portfolio/node_modules/eslint-config-next/package.json'\\).peerDependencies\\)\")"
     ]
   }
 }

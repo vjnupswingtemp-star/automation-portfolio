@@ -153,9 +153,9 @@ export function ChatWidget() {
                       <Bot className="w-3.5 h-3.5 text-blue-600" />
                     </div>
                   <div className="bg-white border border-gray-100 px-4 py-3.5 rounded-2xl rounded-bl-sm shadow-sm flex items-center gap-1.5 h-[42px]">
-                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={shouldReduce ? {} : { y: [0, -4, 0] }} transition={{ repeat: shouldReduce ? 0 : Infinity, duration: 0.6, ease: "easeInOut" }} />
-                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={shouldReduce ? {} : { y: [0, -4, 0] }} transition={{ repeat: shouldReduce ? 0 : Infinity, duration: 0.6, ease: "easeInOut", delay: 0.2 }} />
-                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={shouldReduce ? {} : { y: [0, -4, 0] }} transition={{ repeat: shouldReduce ? 0 : Infinity, duration: 0.6, ease: "easeInOut", delay: 0.4 }} />
+                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut" }} />
+                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut", delay: 0.2 }} />
+                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut", delay: 0.4 }} />
                   </div>
                 </div>
               )}

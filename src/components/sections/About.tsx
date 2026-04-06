@@ -44,7 +44,7 @@ export function About() {
         {/* Section label (Neo-Brutalist Y2K Badge) */}
         <div className="mb-16 md:mb-24 flex justify-between items-end">
           <motion.div
-            initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 10 }}
+            initial=
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
@@ -58,10 +58,10 @@ export function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 items-center">
           {/* Bio + skills */}
           <motion.div
-            initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            initial=
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={shouldReduce ? { duration: 0 } : { duration: 0.6, delay: 0.1, ease: 'easeOut' as const }}
+            transition=
             className="md:col-span-2 flex flex-col justify-center max-w-2xl"
           >
             <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-near-black leading-none mb-8">
@@ -75,10 +75,10 @@ export function About() {
 
           {/* Team photo */}
           <motion.div
-            initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            initial=
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={shouldReduce ? { duration: 0 } : { duration: 0.6, delay: 0.2, ease: 'easeOut' as const }}
+            transition=
             className="w-full relative"
           >
             {/* Clean isolated container for Team Photo */}

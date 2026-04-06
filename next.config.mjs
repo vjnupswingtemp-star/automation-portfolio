@@ -10,7 +10,7 @@ const nextConfig = {
       // 'unsafe-inline' is ignored by nonce-aware browsers — kept as fallback for older ones
       "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob:",
+      "img-src 'self' data: blob: https://images.unsplash.com",
       "font-src 'self'",
       // /api/chat is same-origin; Vercel Analytics vitals endpoint
       "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",

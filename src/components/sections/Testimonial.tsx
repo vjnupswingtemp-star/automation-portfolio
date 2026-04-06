@@ -16,7 +16,7 @@ export function Testimonial() {
         
         <div className="mb-10 lg:mb-12 flex justify-center lg:justify-start items-end">
           <motion.div 
-            initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 10 }}
+            initial=
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
           >
@@ -27,10 +27,10 @@ export function Testimonial() {
         </div>
 
         <motion.div
-          initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          initial=
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={shouldReduce ? { duration: 0 } : { duration: 0.7, delay: 0.2, ease: 'easeOut' as const }}
+          transition=
           className="relative flex flex-col items-center justify-center max-w-4xl mx-auto w-full text-center"
         >
 
@@ -39,9 +39,10 @@ export function Testimonial() {
             <div className="w-[180px] h-[180px] md:w-[240px] md:h-[240px] bg-white p-2 md:p-3 rounded-full border border-gray-200 shadow-[0_12px_40px_rgba(0,0,0,0.06)] relative z-10 transition-transform duration-700 ease-out hover:scale-[1.03]">
               <div className="w-full h-full relative rounded-full overflow-hidden bg-gray-50 scale-[0.98]">
                 <Image
-                  src={testimonial.image || "/images/upload-client-photo.jpg"} 
+                  src={testimonial.image || "/images/upload-client-photo.jpg"}
                   alt={`${testimonial.author} - ${testimonial.role}`}
                   fill
+                  unoptimized
                   className="object-cover object-center grayscale hover:grayscale-0 opacity-90 hover:opacity-100 transition-all duration-700"
                 />
               </div>

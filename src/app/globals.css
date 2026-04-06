@@ -13,3 +13,25 @@ body {
     @apply font-mono text-xs text-muted uppercase tracking-widest;
   }
 }
+
+/* CSS fade-in used as a reliable SSR-safe fallback for hero content */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-fade-1 { animation: fadeInUp 0.7s ease-out 0.1s both; }
+.hero-fade-2 { animation: fadeInUp 0.7s ease-out 0.25s both; }
+.hero-fade-3 { animation: fadeInUp 0.7s ease-out 0.4s both; }
+.hero-fade-4 { animation: fadeInUp 0.7s ease-out 0.55s both; }
+.hero-fade-5 { animation: fadeInUp 0.7s ease-out 0.7s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-1,
+  .hero-fade-2,
+  .hero-fade-3,
+  .hero-fade-4,
+  .hero-fade-5 {
+    animation: none;
+  }
+}

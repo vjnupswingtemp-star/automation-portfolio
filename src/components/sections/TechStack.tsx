@@ -47,7 +47,7 @@ export function TechStack() {
           {/* Left: Typography */}
           <div className="lg:w-1/3 flex flex-col justify-start">
             <motion.div 
-              initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 10 }}
+              initial=
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               className="mb-8"
@@ -58,7 +58,7 @@ export function TechStack() {
             </motion.div>
             
             <motion.h2
-              initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 20 }}
+              initial=
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: 0.1 }}
@@ -72,7 +72,7 @@ export function TechStack() {
               {techStack.stats.map((stat, idx) => (
                 <motion.div 
                   key={stat.label}
-                  initial={shouldReduce ? { opacity: 1 } : { opacity: 0, x: -10 }}
+                  initial=
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + (idx * 0.1), duration: 0.5 }}
@@ -91,7 +91,7 @@ export function TechStack() {
               {techStack.tools.map((tool, idx) => (
                 <motion.div
                   key={tool.name}
-                  initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: 20 }}
+                  initial=
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: idx * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

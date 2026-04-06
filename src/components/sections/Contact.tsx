@@ -28,10 +28,10 @@ export function Contact() {
 
       <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
         <motion.div
-          initial={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          initial=
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={shouldReduce ? { duration: 0 } : { duration: 0.7, ease: 'easeOut' as const }}
+          transition=
         >          {/* Headline */}
           {/* Headline */}
           <h2 className="font-serif font-normal tracking-normal text-4xl md:text-6xl text-white leading-[1.05] mb-6">
