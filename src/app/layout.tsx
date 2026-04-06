@@ -31,6 +31,7 @@ const bitroad = localFont({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.SITE_URL ?? 'https://autobeets.vercel.app'),
   title: 'We Automate. You Grow. — AI Automation Services',
   description: 'We build n8n workflows and custom AI agents that eliminate manual work for growing businesses. Asia-based team, global clients.',
   icons: {

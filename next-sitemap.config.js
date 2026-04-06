@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   // ← Replace with your production domain before deploying
-  siteUrl: process.env.SITE_URL || 'https://example.com',
+  siteUrl: process.env.SITE_URL || 'https://autobeets.vercel.app',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [

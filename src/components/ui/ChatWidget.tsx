@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { MessageSquare, X, Send, Bot, User, Maximize2, Minimize2 } from 'lucide-react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { MessageSquare, X, Send, Bot, Maximize2, Minimize2 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 
 type Message = {
@@ -12,6 +12,7 @@ type Message = {
 }
 
 export function ChatWidget() {
+  const shouldReduce = useReducedMotion()
   const [isOpen, setIsOpen] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
@@ -24,6 +25,8 @@ export function ChatWidget() {
     }
   ])
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const lastSentAt = useRef<number>(0)
+  const RATE_LIMIT_MS = 1500
 
   // Auto-scroll to bottom of chat
   useEffect(() => {
@@ -36,31 +39,38 @@ export function ChatWidget() {
     e.preventDefault()
     if (!inputValue.trim()) return
 
+    const now = Date.now()
+    if (now - lastSentAt.current < RATE_LIMIT_MS) return
+    lastSentAt.current = now
+
     const userMsg: Message = { id: Date.now().toString(), text: inputValue, sender: 'user' }
     setMessages(prev => [...prev, userMsg])
     setInputValue('')
     setIsTyping(true)
 
-    const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/chat'
-
     try {
-      const response = await fetch(N8N_WEBHOOK_URL, {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg.text })
+        body: JSON.stringify({ message: userMsg.text }),
       })
       const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error ?? 'Unknown error')
+      }
+
       const botMsg: Message = {
         id: (Date.now() + 1).toString(),
         text: data.reply,
-        sender: 'bot'
+        sender: 'bot',
       }
       setMessages(prev => [...prev, botMsg])
-    } catch (error) {
-      const errorMsg: Message = { 
-        id: (Date.now() + 1).toString(), 
-        text: "Oops, I couldn't connect to my brain. Please check your internet or try again later.", 
-        sender: 'bot' 
+    } catch {
+      const errorMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "Oops, I couldn't connect to my brain. Please check your internet or try again later.",
+        sender: 'bot',
       }
       setMessages(prev => [...prev, errorMsg])
     } finally {
@@ -131,7 +141,7 @@ export function ChatWidget() {
                         : 'bg-white text-gray-800 border border-gray-100 rounded-bl-sm [&_p]:mb-3 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_strong]:text-black [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1.5'
                     }`}
                   >
-                    <ReactMarkdown>{msg.text.replace(/\\n/g, '\n').replace(/\\\*/g, '*').replace(/(?<!\n)(\d+\.\s+\*\*)/g, '\n\n$1').replace(/(?<!\n)(-\s+\*\*)/g, '\n\n$1')}</ReactMarkdown>
+                    <ReactMarkdown disallowedElements={['script', 'iframe', 'object', 'embed', 'form', 'input', 'button']} unwrapDisallowed>{msg.text.replace(/\\n/g, '\n').replace(/\\\*/g, '*').replace(/(?<!\n)(\d+\.\s+\*\*)/g, '\n\n$1').replace(/(?<!\n)(-\s+\*\*)/g, '\n\n$1')}</ReactMarkdown>
                   </div>
                 </div>
               ))}
@@ -143,9 +153,9 @@ export function ChatWidget() {
                       <Bot className="w-3.5 h-3.5 text-blue-600" />
                     </div>
                   <div className="bg-white border border-gray-100 px-4 py-3.5 rounded-2xl rounded-bl-sm shadow-sm flex items-center gap-1.5 h-[42px]">
-                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut" }} />
-                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut", delay: 0.2 }} />
-                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut", delay: 0.4 }} />
+                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={shouldReduce ? {} : { y: [0, -4, 0] }} transition={{ repeat: shouldReduce ? 0 : Infinity, duration: 0.6, ease: "easeInOut" }} />
+                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={shouldReduce ? {} : { y: [0, -4, 0] }} transition={{ repeat: shouldReduce ? 0 : Infinity, duration: 0.6, ease: "easeInOut", delay: 0.2 }} />
+                    <motion.div className="w-1.5 h-1.5 bg-gray-400 rounded-full" animate={shouldReduce ? {} : { y: [0, -4, 0] }} transition={{ repeat: shouldReduce ? 0 : Infinity, duration: 0.6, ease: "easeInOut", delay: 0.4 }} />
                   </div>
                 </div>
               )}
@@ -158,11 +168,12 @@ export function ChatWidget() {
                 onSubmit={handleSendMessage}
                 className="flex items-center gap-2 bg-[#f8f9fc] p-1.5 rounded-full border border-gray-200/60 focus-within:border-[#3662E3]/40 focus-within:ring-2 focus-within:ring-[#3662E3]/10 transition-all"
               >
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Ask me anything..." 
+                  placeholder="Ask me anything..."
+                  maxLength={500}
                   className="flex-1 bg-transparent border-none focus:outline-none px-4 text-sm text-gray-800 placeholder:text-gray-400 font-sans"
                 />
                 <button 
