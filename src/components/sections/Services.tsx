@@ -39,10 +39,10 @@ export function Services() {
 
       {/* Background Image: High-Definition Unsplash Sky (Bypasses Next.js Image Config) */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1541119638723-c51cbe2262aa?q=100&w=3000&auto=format&fit=crop')",
-          backgroundPosition: "center 20%"
+          background: 'linear-gradient(to bottom, #7bb4eb 0%, #b3d9ff 50%, #e6f2ff 100%)',
+          opacity: 0.85
         }}
         aria-hidden="true"
       />
