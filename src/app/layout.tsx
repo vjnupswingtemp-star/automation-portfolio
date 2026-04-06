@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter, Bricolage_Grotesque } from 'next/font/google'
+import { Inter, Bricolage_Grotesque, Playfair_Display } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
+import { ChatWidget } from '@/components/ui'
 import './globals.css'
 
 const inter = Inter({
@@ -16,11 +18,23 @@ const bricolage = Bricolage_Grotesque({
   display: 'swap',
 })
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const bitroad = localFont({
+  src: '../../public/fonts/Bitroad-Regular.ttf',
+  variable: '--font-bitroad',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'We Automate. You Grow. — AI Automation Services',
   description: 'We build n8n workflows and custom AI agents that eliminate manual work for growing businesses. Asia-based team, global clients.',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/logos/autologo.svg',
   },
   openGraph: {
     title: 'We Automate. You Grow. — AI Automation Services',
@@ -35,9 +49,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bricolage.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${bricolage.variable} ${playfair.variable} ${bitroad.variable} scroll-smooth`}>
       <body>
         {children}
+        <ChatWidget />
         <Analytics />
       </body>
     </html>

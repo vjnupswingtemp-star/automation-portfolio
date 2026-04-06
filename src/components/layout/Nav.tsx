@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { focusRing } from '@/lib/tokens'
 import { meta } from '@/lib/content'
@@ -9,77 +10,99 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
+    const onScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="#"
-          className={`font-body font-black text-sm text-near-black tracking-tight ${focusRing}`}
-        >
-          ✦ We Automate. You Grow.
-        </a>
-
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {['Work', 'About', 'Contact'].map((item) => (
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 md:px-6 pointer-events-none">
+      <div 
+        className={`pointer-events-auto relative w-full max-w-[1100px] bg-white/90 backdrop-blur-md border border-gray-200/50 rounded-full transition-all duration-300 ${
+          scrolled ? 'shadow-md shadow-near-black/5' : 'shadow-xl shadow-near-black/10'
+        }`}
+      >
+        <nav className="w-full h-16 md:h-20 flex items-center px-6 md:px-8">
+          
+          {/* Logo - Far Left */}
+          <div className="w-1/4 flex items-center">
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className={`text-sm text-muted hover:text-near-black transition-colors ${focusRing}`}
+              href="#"
+              className={`block focus:outline-none ${focusRing}`}
             >
-              {item}
+              <Image 
+                src="/logos/autologo.svg" 
+                alt="Logo" 
+                width={120} 
+                height={40} 
+                className="h-10 w-auto"
+                priority
+              />
             </a>
-          ))}
-          <a
-            href={`mailto:${meta.email}`}
-            className={`bg-near-black text-white text-xs font-black font-mono uppercase tracking-wider px-4 py-2 rounded-sm hover:bg-ai-accent transition-colors ${focusRing}`}
-          >
-            Hire Us →
-          </a>
-        </div>
+          </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className={`md:hidden text-near-black ${focusRing}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </nav>
+          {/* Desktop links - Centered */}
+          <div className="hidden lg:flex flex-1 justify-center items-center gap-10">
+            {['Home', 'Toolbox', 'Services', 'Work', 'About'].map((item) => (
+              <a
+                key={item}
+                href={item === 'Home' ? '#hero' : item === 'Toolbox' ? '#tech-stack' : `#${item.toLowerCase().replace(/ /g, '-')}`}
+                className={`text-[15px] font-sans tracking-wide text-near-black/80 hover:text-black transition-colors ${focusRing}`}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
 
-      {/* Mobile dropdown */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
-          {['Work', 'About', 'Contact'].map((item) => (
+          {/* CTA - Far Right */}
+          <div className="hidden lg:flex w-1/4 justify-end items-center">
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className={`text-sm text-near-black font-medium ${focusRing}`}
+              href={`mailto:${meta.email}`}
+              className={`relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-7 py-2.5 rounded-xl text-[15px] font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.25),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 ${focusRing}`}
+            >
+               <span className="relative z-10 drop-shadow-sm font-sans tracking-wide">Hire Us</span>
+               {/* Glossy Gel Highlight */}
+               <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
+            </a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <div className="lg:hidden flex flex-1 justify-end">
+            <button
+              className={`p-2 -mr-2 text-near-black ${focusRing}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={28} strokeWidth={1.5} /> : <Menu size={28} strokeWidth={1.5} />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="absolute top-full left-0 right-0 mt-4 bg-white rounded-3xl p-6 flex flex-col gap-6 border border-gray-100 shadow-2xl z-10 w-full overflow-hidden">
+            {['Home', 'Toolbox', 'Services', 'Work', 'About'].map((item) => (
+              <a
+                key={item}
+                href={item === 'Home' ? '#hero' : item === 'Toolbox' ? '#tech-stack' : `#${item.toLowerCase().replace(/ /g, '-')}`}
+                className={`text-lg text-near-black font-sans tracking-wide ${focusRing}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+            <a
+              href={`mailto:${meta.email}`}
+              className={`mt-4 relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-8 py-3.5 rounded-xl text-center text-lg font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.3),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 ${focusRing}`}
               onClick={() => setMenuOpen(false)}
             >
-              {item}
+               <span className="relative z-10 drop-shadow-sm font-sans tracking-wide">Hire Us</span>
+               <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
             </a>
-          ))}
-          <a
-            href={`mailto:${meta.email}`}
-            className={`bg-near-black text-white text-xs font-black font-mono uppercase tracking-wider px-4 py-3 rounded-sm text-center hover:bg-ai-accent transition-colors ${focusRing}`}
-          >
-            Hire Us →
-          </a>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </header>
   )
 }
