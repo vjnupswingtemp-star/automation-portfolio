@@ -35,7 +35,7 @@ export function Services() {
   }, [])
 
   return (
-    <section id="services" className="relative overflow-hidden pt-8 md:pt-12 pb-16 md:pb-20">
+    <section id="services" className="relative overflow-hidden pt-0 md:pt-12 pb-16 md:pb-20">
 
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
