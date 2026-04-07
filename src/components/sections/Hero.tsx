@@ -11,7 +11,7 @@ export function Hero() {
     return {
       initial: { opacity: 1, y: 0 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.8, delay: delay, ease: "easeOut" },
+      transition: { duration: 0.8, delay: delay, ease: "easeOut" as const },
     }
   }
 
