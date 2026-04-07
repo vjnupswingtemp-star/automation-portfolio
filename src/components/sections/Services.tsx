@@ -26,11 +26,18 @@ interface CustomServiceItem {
 export function Services() {
   const shouldReduce = false // useReducedMotion()
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [progressKey, setProgressKey] = useState(0)
+
+  const goToSlide = (i: number) => {
+    setCurrentIndex(i)
+    setProgressKey((k) => k + 1)
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % services.items.length)
-    }, 30000)
+      setProgressKey((k) => k + 1)
+    }, 25000)
     return () => clearInterval(timer)
   }, [])
 
@@ -69,21 +76,22 @@ export function Services() {
           </span>
         </div>
 
-        {/* Massive Art Board Cards Carousel (Infinite Fade/Slide Loop) */}
+        {/* Massive Art Board Cards Carousel (Native CSS Flex Slider) */}
         <div className="relative z-10 w-full overflow-hidden">
-          <AnimatePresence mode="wait">
-            {(() => {
-              const item = services.items[currentIndex] as unknown as CustomServiceItem
-              const isEven = currentIndex % 2 === 0
+          <motion.div 
+            className="flex w-full"
+            initial={false}
+            animate={{ x: `-${currentIndex * 100}%` }}
+            transition={{ type: "tween", ease: "easeInOut", duration: 0.8 }}
+          >
+            {services.items.map((rawItem, index) => {
+              const item = rawItem as unknown as CustomServiceItem
+              const isEven = index % 2 === 0
               
               if (item.newDesign) {
                 return (
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 1, x: 0 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 1, x: -50 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  <div
+                    key={index}
                     className="w-full shrink-0 flex justify-center md:px-4 py-4"
                   >
                     <div className="relative w-full max-w-[1300px] bg-white border border-gray-100 shadow-[0_12px_40px_rgb(0,0,0,0.06)] rounded-3xl overflow-hidden flex flex-col md:flex-row mx-auto group min-h-[500px]">
@@ -116,17 +124,13 @@ export function Services() {
                       {/* Bottom Green Block */}
                       <div className={`absolute bottom-0 w-32 md:w-48 h-6 md:h-8 bg-[#41B853] ${isEven ? 'right-[15%]' : 'left-[15%]'}`} />
                     </div>
-                  </motion.div>
+                  </div>
                 )
               }
 
               return (
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 1, x: 0 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 1, x: -50 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                <div
+                  key={index}
                   className="w-full shrink-0 flex justify-center md:px-4 py-4"
                 >
                   <div className={`relative w-full max-w-[1300px] grid grid-cols-1 lg:grid-cols-12 rounded-[2.5rem] overflow-hidden ${item.bg} border-2 border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-sm`}>
@@ -143,7 +147,7 @@ export function Services() {
 
                       <ul className="space-y-5">
                         {item.outcomes.map((outcome) => (
-                          <li key={outcome} className="flex items-start gap-4 text-base font-sf text-near-black/90 font-medium">
+                           <li key={outcome} className="flex items-start gap-4 text-base font-sf text-near-black/90 font-medium">
                             <Check
                               size={22}
                               strokeWidth={2}
@@ -169,10 +173,10 @@ export function Services() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               )
-            })()}
-          </AnimatePresence>
+            })}
+          </motion.div>
         </div>
 
         {/* Carousel Dot Indicators */}
@@ -180,10 +184,20 @@ export function Services() {
           {services.items.map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-transform duration-300 ${currentIndex === i ? 'bg-[#3662E3] scale-[1.5]' : 'bg-gray-300 hover:bg-gray-400'}`}
+              onClick={() => goToSlide(i)}
+              className={`relative overflow-hidden rounded-full transition-all duration-300 ${currentIndex === i ? 'w-12 h-2.5 bg-gray-200' : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'}`}
               aria-label={`Go to slide ${i + 1}`}
-            />
+            >
+              {currentIndex === i && (
+                <motion.div
+                  key={progressKey}
+                  className="absolute inset-y-0 left-0 bg-[#3662E3] rounded-full"
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 25, ease: 'linear' }}
+                />
+              )}
+            </button>
           ))}
         </div>
       </div>
