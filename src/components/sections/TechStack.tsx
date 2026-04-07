@@ -3,50 +3,27 @@ import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { techStack } from '@/lib/content'
 import { focusRing } from '@/lib/tokens'
-
-// Since we are mocking SVGs, we will use a styled 3D-feeling text fallback
-// for a high-end minimalist Y2K look if the logo image fails to load.
 import { Terminal } from 'lucide-react'
 
-function ToolLogo({ name, logo }: { name: string; logo: string }) {
-  const [failed, setFailed] = useState(false)
-
-  if (failed || logo.endsWith('.svg')) {
-    return (
-      <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-start mb-6 text-gray-400">
-        <Terminal className="w-10 h-10 md:w-12 md:h-12" strokeWidth={1} />
-      </div>
-    )
-  }
-
-  return (
-    <img
-      src={logo}
-      alt={name}
-      className="h-16 md:h-20 w-auto max-w-[140px] object-contain filter drop-shadow-sm group-hover:scale-110 transition-transform duration-500 ease-out"
-      onError={() => setFailed(true)}
-    />
-  )
-}
-
 export function TechStack() {
-  const shouldReduce = false // useReducedMotion()
+  const shouldReduce = useReducedMotion()
+
+  // Duplicate tools for seamless infinite loop
+  const loopTools = [...techStack.tools, ...techStack.tools]
 
   return (
     <section id="tech-stack" className="relative overflow-hidden bg-white pt-24 pb-12 md:pt-32 md:pb-16">
-      
-      {/* (Removed Massive Outline Text Background) */}
 
       {/* Decorative Thin Lines (Matching Hero) */}
       <div className="absolute top-0 left-6 md:left-12 w-px h-full bg-gray-100 z-0" />
       <div className="absolute top-0 right-6 md:right-12 w-px h-full bg-gray-100 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
-        
+
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 cursor-default">
           {/* Left: Typography */}
           <div className="lg:w-1/3 flex flex-col justify-start">
-            <motion.div 
+            <motion.div
               initial={shouldReduce ? { opacity: 1 } : { opacity: 1, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -56,7 +33,7 @@ export function TechStack() {
                 {techStack.label}
               </span>
             </motion.div>
-            
+
             <motion.h2
               initial={shouldReduce ? { opacity: 1 } : { opacity: 1, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +47,7 @@ export function TechStack() {
             {/* Statistics Mini-Row */}
             <div className="mt-16 flex flex-row lg:flex-col justify-between gap-4 lg:gap-8 border-t border-gray-200 pt-8 w-full lg:max-w-sm">
               {techStack.stats.map((stat, idx) => (
-                <motion.div 
+                <motion.div
                   key={stat.label}
                   initial={shouldReduce ? { opacity: 1 } : { opacity: 1, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -85,9 +62,38 @@ export function TechStack() {
             </div>
           </div>
 
-          {/* Right: Minimalist Raw Grid Grid */}
+          {/* Right side */}
           <div className="lg:w-2/3">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
+
+            {/* Mobile: Continuous CSS marquee — logos only, no description */}
+            <div className="block md:hidden overflow-hidden -mx-6">
+              <div className="flex w-max animate-marquee gap-12 py-4">
+                {loopTools.map((tool, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-center shrink-0 px-3"
+                  >
+                    <img
+                      src={tool.logo}
+                      alt={tool.name}
+                      className={`object-contain filter drop-shadow-sm ${
+                        tool.name === 'OpenAI' ? 'h-8 max-w-[100px]' : 'h-10 max-w-[120px]'
+                      }`}
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none'
+                        const fallback = document.createElement('span')
+                        fallback.className = 'font-sans font-bold text-sm text-gray-800 tracking-tight whitespace-nowrap'
+                        fallback.innerText = tool.name
+                        ;(e.target as HTMLElement).parentElement?.appendChild(fallback)
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop: Minimalist Raw Grid */}
+            <div className="hidden md:grid md:grid-cols-3 gap-x-8 gap-y-12">
               {techStack.tools.map((tool, idx) => (
                 <motion.div
                   key={tool.name}
@@ -106,7 +112,6 @@ export function TechStack() {
                         tool.name === 'OpenAI' ? 'max-h-10 max-w-[140px]' : 'max-h-14 max-w-[160px]'
                       }`}
                       onError={(e) => {
-                        // Fallback text if image missing
                         (e.target as HTMLElement).style.display = 'none';
                         const fallback = document.createElement('span');
                         fallback.className = 'font-sans font-bold text-xl text-gray-800 tracking-tight';
