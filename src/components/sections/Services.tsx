@@ -35,7 +35,7 @@ export function Services() {
   }, [])
 
   return (
-    <section id="services" className="relative overflow-hidden py-16 md:py-20">
+    <section id="services" className="relative overflow-hidden pt-8 md:pt-12 pb-16 md:pb-20">
 
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -58,12 +58,12 @@ export function Services() {
       {/* Subtle Tint Overlay over the Sky to ensure text readability */}
       <div className="absolute inset-0 bg-white/40 z-[2]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-12 w-full overflow-hidden md:overflow-visible">
         
         {/* Static Y2K Widgets Removed for Cleaner Layout */}
 
         {/* Section Header */}
-        <div className="mb-12 md:mb-16 flex">
+        <div className="mb-8 md:mb-12 flex">
           <span className="inline-block border-2 border-[#3662E3] bg-white text-[#3662E3] shadow-[4px_4px_0px_0px_#3662E3] rounded-sm px-4 py-1.5 text-xs font-bitroad tracking-widest uppercase relative -left-1">
             {services.label}
           </span>
@@ -80,11 +80,11 @@ export function Services() {
                 return (
                   <motion.div
                     key={currentIndex}
-                    initial={{ opacity: 1, x: 50 }}
+                    initial={{ opacity: 1, x: 0 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 1, x: -50 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full shrink-0 flex justify-center px-2 md:px-4 py-4"
+                    className="w-full shrink-0 flex justify-center md:px-4 py-4"
                   >
                     <div className="relative w-full max-w-[1300px] bg-white border border-gray-100 shadow-[0_12px_40px_rgb(0,0,0,0.06)] rounded-3xl overflow-hidden flex flex-col md:flex-row mx-auto group min-h-[500px]">
                       {/* Product Image spanning full height */}
@@ -93,7 +93,7 @@ export function Services() {
                       </div>
                          
                       {/* Headline + Summarized Text + Footer */}
-                      <div className={`w-full md:w-1/2 flex flex-col items-start px-6 md:px-12 lg:px-16 py-10 md:py-16 relative z-20 ${isEven ? '' : 'md:order-1'}`}>
+                      <div className={`w-full md:w-1/2 flex flex-col items-start px-4 sm:px-6 md:px-12 lg:px-16 py-8 md:py-16 relative z-20 ${isEven ? '' : 'md:order-1'}`}>
                          
                          {/* Decorative Top Blue Block */}
                          <div className={`absolute top-0 w-24 md:w-32 h-6 md:h-8 bg-[#095EAA] ${isEven ? 'right-12' : 'left-12'}`} />
@@ -123,11 +123,11 @@ export function Services() {
               return (
                 <motion.div
                   key={currentIndex}
-                  initial={{ opacity: 1, x: 50 }}
+                  initial={{ opacity: 1, x: 0 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 1, x: -50 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full shrink-0 flex justify-center px-2 md:px-4 py-4"
+                  className="w-full shrink-0 flex justify-center md:px-4 py-4"
                 >
                   <div className={`relative w-full max-w-[1300px] grid grid-cols-1 lg:grid-cols-12 rounded-[2.5rem] overflow-hidden ${item.bg} border-2 border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-sm`}>
                     

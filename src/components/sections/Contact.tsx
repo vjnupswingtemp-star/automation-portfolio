@@ -11,7 +11,7 @@ export function Contact() {
   const shouldReduce = false // useReducedMotion()
 
   return (
-    <section id="contact" className="relative bg-near-black py-16 md:py-10 overflow-hidden">
+    <section id="contact" className="relative bg-near-black py-20 md:py-32 overflow-hidden">
       
       {/* Floating 3D Y2K Widgets */}
       <div className="absolute inset-0 z-0 pointer-events-none max-w-6xl mx-auto flex items-center justify-center">

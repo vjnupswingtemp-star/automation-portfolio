@@ -9,14 +9,14 @@ export function Hero() {
 
   function fadeUp(delay: number) {
     return {
-      initial: { opacity: 0, y: 24 },
+      initial: { opacity: 1, y: 0 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.8, delay: delay, ease: "easeOut" as const },
+      transition: { duration: 0.8, delay: delay, ease: "easeOut" },
     }
   }
 
   return (
-    <section id="hero" className="relative overflow-hidden min-h-[80vh] md:min-h-screen flex items-center bg-white pb-20 md:pb-32">
+    <section id="hero" className="relative overflow-hidden min-h-[80vh] md:min-h-screen flex items-center bg-white pb-8 md:pb-12">
       
       {/* Massive Outline Text Background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none z-0 overflow-hidden">
@@ -33,10 +33,10 @@ export function Hero() {
       <div className="absolute top-0 right-6 md:right-12 w-px h-full bg-gray-100 z-0" />
       <div className="absolute top-1/2 left-0 w-full h-px bg-gray-100 z-0" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-32 pb-10 md:pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-32 pb-0 md:pb-8">
         
         {/* Floating Y2K Element 1 (CD Walkman) */}
-        <div className="absolute top-[10%] md:top-[12%] -right-4 md:-right-8 lg:-right-16 w-32 h-32 md:w-[320px] md:h-[320px] z-0 md:z-30 pointer-events-none rotate-[16deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
+        <div className="absolute bottom-[9%] md:bottom-auto top-auto md:top-[12%] right-[-2%] md:-right-8 lg:-right-16 w-36 h-36 md:w-[320px] md:h-[320px] z-20 md:z-30 pointer-events-none rotate-[16deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
           <Image 
             src="/images/y2k_cd_walkman_transparent.png" 
             alt="Y2K CD Walkman" 
@@ -46,7 +46,7 @@ export function Hero() {
         </div>
 
         {/* Floating Y2K Element 2 (Floppy Disk) */}
-        <div className="absolute top-[28%] md:top-[12%] left-[-5%] md:left-[-5%] w-24 h-24 md:w-40 md:h-40 z-0 md:z-20 pointer-events-none rotate-[-12deg] opacity-70 md:opacity-100">
+        <div className="hidden md:block absolute top-[28%] md:top-[12%] left-[-5%] md:left-[-5%] w-24 h-24 md:w-40 md:h-40 z-0 md:z-20 pointer-events-none rotate-[-12deg] opacity-70 md:opacity-100">
           <Image 
             src="/images/y2k_floppy.png" 
             alt="Y2K Floppy Disk" 

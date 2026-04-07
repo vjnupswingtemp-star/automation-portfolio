@@ -33,7 +33,7 @@ export function About() {
   const shouldReduce = false // useReducedMotion()
 
   return (
-    <section id="about" className="relative overflow-hidden py-16 md:py-20 bg-white">
+    <section id="about" className="relative overflow-hidden py-8 md:py-16 bg-white">
       {/* Decorative Thin Lines to match global grid */}
       <div className="absolute top-0 left-6 md:left-12 w-px h-full bg-gray-100 z-0" />
       <div className="absolute top-0 right-6 md:right-12 w-px h-full bg-gray-100 z-0" />
@@ -42,7 +42,7 @@ export function About() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 w-full">
         {/* Section label (Neo-Brutalist Y2K Badge) */}
-        <div className="mb-16 md:mb-24 flex justify-between items-end">
+        <div className="mb-8 md:mb-16 flex justify-between items-end">
           <motion.div
             initial={shouldReduce ? { opacity: 1 } : { opacity: 1, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export function About() {
             className="w-full relative"
           >
             {/* Clean isolated container for Team Photo */}
-            <div className="w-full flex items-center justify-center transition-all duration-300 -mt-12 mb-[-2rem] md:mt-0 md:mb-0">
+            <div className="w-full flex items-center justify-center transition-all duration-300 -mt-24 mb-[-2rem] md:mt-0 md:mb-0">
               <TeamPhoto />
             </div>
           </motion.div>
