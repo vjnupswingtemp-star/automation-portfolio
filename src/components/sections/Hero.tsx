@@ -78,13 +78,14 @@ export function Hero() {
                 {/* Glossy Gel Highlight */}
                 <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
               </a>
-              <button
-                data-cal-link="auto-beets-epcwto/30min"
-                data-cal-config='{"layout":"month_view"}'
+              <a
+                href="https://cal.com/auto-beets-epcwto/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`inline-flex items-center justify-center px-8 py-4 bg-white border border-gray-200 text-near-black text-sm font-medium rounded-xl hover:bg-gray-50 transition-colors cursor-pointer ${focusRing}`}
               >
                 {hero.cta.secondary}
-              </button>
+              </a>
             </motion.div>
           </div>
 

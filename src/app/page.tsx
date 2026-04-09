@@ -5,6 +5,7 @@ import { Services } from '@/components/sections/Services'
 import { CaseStudy } from '@/components/sections/CaseStudy'
 import { Testimonial } from '@/components/sections/Testimonial'
 import { About } from '@/components/sections/About'
+import { ROICalculator } from '@/components/sections/ROICalculator'
 import { Contact } from '@/components/sections/Contact'
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <CaseStudy />
         <Testimonial />
         <About />
+        <ROICalculator />
         <Contact />
       </main>
     </>
