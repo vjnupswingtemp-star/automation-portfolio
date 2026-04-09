@@ -2,14 +2,16 @@
 import { useState } from 'react'
 import { caseStudies } from '@/lib/content'
 import Image from 'next/image'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Maximize, Minimize } from 'lucide-react'
 
 export function CaseStudy() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [visible, setVisible] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const switchTo = (next: number) => {
     setVisible(false)
+    setIsExpanded(false)
     setTimeout(() => {
       setCurrentIndex(next)
       setVisible(true)
@@ -93,7 +95,20 @@ export function CaseStudy() {
           </div>
 
           {/* Video / Image */}
-          <div className="relative w-full rounded-[2.5rem] overflow-hidden min-h-[300px] md:min-h-[500px] lg:min-h-[600px] bg-[#111] shadow-xl group border border-gray-100">
+          <div className={isExpanded 
+            ? "fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4 sm:p-8" 
+            : "relative w-full rounded-[2.5rem] overflow-hidden min-h-[300px] md:min-h-[500px] lg:min-h-[600px] bg-[#111] shadow-xl group border border-gray-100"}>
+            
+            {isExpanded && (
+              <button 
+                onClick={() => setIsExpanded(false)}
+                className="absolute top-6 right-6 z-[110] p-3 md:p-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full transition-colors backdrop-blur-md"
+                aria-label="Minimize"
+              >
+                <Minimize className="w-5 h-5 md:w-6 md:h-6" />
+              </button>
+            )}
+
             {study.videoSrc ? (
               <>
                 <video
@@ -103,21 +118,48 @@ export function CaseStudy() {
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                  className={isExpanded
+                    ? "relative z-[105] w-full max-w-5xl max-h-[85vh] object-contain rounded-xl sm:rounded-2xl shadow-2xl"
+                    : "absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"}
                 />
-                <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] pointer-events-none rounded-[2.5rem]" />
+                {!isExpanded && (
+                  <button 
+                    onClick={() => setIsExpanded(true)}
+                    className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 bg-black/40 hover:bg-black/60 text-white rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity backdrop-blur-sm border border-white/10"
+                    aria-label="Maximize video"
+                  >
+                    <Maximize className="w-5 h-5" />
+                  </button>
+                )}
+                {!isExpanded && (
+                  <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] pointer-events-none rounded-[2.5rem]" />
+                )}
               </>
             ) : (
-              study.workflowImage && (
-                <Image
-                  src={study.workflowImage}
-                  alt="Automated Workflow Architecture"
-                  fill
-                  className="object-cover object-center opacity-90"
-                />
-              )
+                study.workflowImage && (
+                  <>
+                    <div className={isExpanded ? "relative z-[105] w-full max-w-5xl h-[85vh]" : "absolute inset-0 w-full h-full"}>
+                      <Image
+                        src={study.workflowImage}
+                        alt="Automated Workflow Architecture"
+                        fill
+                        className={isExpanded ? "object-contain" : "object-cover object-center opacity-90"}
+                      />
+                    </div>
+                    {!isExpanded && (
+                      <button 
+                        onClick={() => setIsExpanded(true)}
+                        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 bg-black/40 hover:bg-black/60 text-white rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity backdrop-blur-sm border border-white/10"
+                        aria-label="Maximize image"
+                      >
+                        <Maximize className="w-5 h-5" />
+                      </button>
+                    )}
+                  </>
+                )
             )}
-            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-2 z-10 pointer-events-none">
+            
+            <div className={`absolute bottom-6 left-6 right-6 flex flex-wrap gap-2 z-10 pointer-events-none ${isExpanded ? 'max-w-5xl mx-auto' : ''}`}>
               {study.tools.map((tool) => (
                 <span key={tool} className="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 text-white rounded-full text-xs font-mono font-medium tracking-wide shadow-sm">
                   {tool}
