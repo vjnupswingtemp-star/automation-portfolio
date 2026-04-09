@@ -16,22 +16,9 @@ export function Hero() {
   }
 
   return (
+    <>
     <section id="hero" className="relative overflow-hidden min-h-[80vh] md:min-h-screen flex items-center bg-white pb-0 md:pb-12">
       
-      {/* Massive Outline Text Background */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none z-0 overflow-hidden">
-        <h1 
-          className="text-[17vw] sm:text-[15vw] md:text-[13vw] lg:text-[12vw] font-sans font-black text-transparent whitespace-nowrap leading-none tracking-tighter" 
-          style={{ WebkitTextStroke: '2px #000' }}
-        >
-          AUTOMATE
-        </h1>
-      </div>
-
-      {/* Decorative Thin Lines */}
-      <div className="absolute top-0 left-6 md:left-12 w-px h-full bg-gray-100 z-0" />
-      <div className="absolute top-0 right-6 md:right-12 w-px h-full bg-gray-100 z-0" />
-      <div className="absolute top-1/2 left-0 w-full h-px bg-gray-100 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-32 pb-0 md:pb-8">
         
@@ -45,23 +32,13 @@ export function Hero() {
           />
         </div>
 
-        {/* Floating Y2K Element 2 (Floppy Disk) */}
-        <div className="hidden md:block absolute top-[28%] md:top-[12%] left-[-5%] md:left-[-5%] w-24 h-24 md:w-40 md:h-40 z-0 md:z-20 pointer-events-none rotate-[-12deg] opacity-70 md:opacity-100">
-          <Image 
-            src="/images/y2k_floppy.png" 
-            alt="Y2K Floppy Disk" 
-            fill 
-            className="object-contain" 
-          />
-        </div>
-
-        {/* Floating Y2K Element 3 (Tamagotchi) */}
-        <div className="absolute bottom-[10%] md:bottom-[-5%] left-[-2%] md:left-[8%] w-20 h-20 md:w-48 md:h-48 z-20 pointer-events-none rotate-[8deg]">
+        {/* Floating Y2K Element (Tamagotchi) */}
+        <div className="absolute bottom-[9%] md:bottom-auto top-auto md:top-[12%] left-[-2%] md:-left-4 lg:-left-8 w-20 h-20 md:w-56 md:h-56 z-20 md:z-30 pointer-events-none rotate-[-12deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
           <Image 
             src="/images/y2k_tamagotchi.png" 
             alt="Y2K Tamagotchi" 
             fill 
-            className="object-contain" 
+            className="object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.18)]" 
           />
         </div>
 
@@ -69,11 +46,7 @@ export function Hero() {
           
           {/* Typography & Content */}
           <div className="flex-1 flex flex-col items-center">
-            <motion.div {...fadeUp(0.1)} className="mb-6">
-              <span className="inline-block border-2 border-[#3662E3] bg-white text-[#3662E3] shadow-[4px_4px_0px_0px_#3662E3] rounded-sm px-4 py-1.5 text-xs font-bitroad tracking-widest uppercase">
-                {hero.label}
-              </span>
-            </motion.div>
+
 
             <motion.h1
               {...fadeUp(0.2)}
@@ -113,17 +86,35 @@ export function Hero() {
                 {hero.cta.secondary}
               </a>
             </motion.div>
-
-            {/* Social proof */}
-            <motion.div {...fadeUp(0.5)} className="mt-10 md:mt-16 pt-6 md:pt-8 border-t border-gray-200 max-w-2xl w-full mx-auto bg-white/50 backdrop-blur-sm">
-              <p className="text-xs font-semibold text-gray-400 tracking-wide uppercase">
-                {hero.socialProof}
-              </p>
-            </motion.div>
           </div>
 
         </div>
       </div>
     </section>
+
+    {/* Social proof Stats Banner - Full Width Section */}
+    <section className="w-full bg-[#3662E3] py-12 md:py-16">
+      <motion.div {...fadeUp(0.5)} className="max-w-7xl mx-auto px-4 md:px-12 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 relative">
+          {/* Mobile horizontal divider */}
+          <div className="md:hidden absolute top-1/2 left-4 right-4 h-px bg-white/20 -translate-y-1/2" />
+          
+          {hero.socialProofStats.map((stat, i) => (
+            <div 
+              key={i} 
+              className={`flex flex-col items-center justify-center text-center px-2 md:px-6 ${i % 2 !== 0 ? 'border-l border-white/20 md:border-l-0' : ''} ${i !== 0 ? 'md:border-l md:border-white/20' : ''}`}
+            >
+              <span className="text-4xl md:text-5xl lg:text-[4rem] font-bitroad font-normal text-white tracking-widest mb-2 drop-shadow-sm uppercase">
+                {stat.value}
+              </span>
+              <span className="text-[10px] md:text-[11px] font-sf font-medium text-white/85 tracking-widest max-w-[160px] leading-tight uppercase">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+    </>
   )
 }

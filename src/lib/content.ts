@@ -12,7 +12,12 @@ export const hero = {
   accentWord: 'time', 
   tagline: 'Stop losing hours to operational bottlenecks and repetitive admin. We build intelligent automation systems so you can focus on scaling your business.',
   cta: { primary: 'See How We Help', secondary: "Let's Talk" },
-  socialProof: '✓ 100% Custom Tailored Systems · Zero Technical Jargon · Direct Founder Support',
+  socialProofStats: [
+    { value: '100%', label: 'Custom Tailored Systems' },
+    { value: '0', label: 'Technical Jargon' },
+    { value: '1:1', label: 'Direct Founder Support' },
+    { value: '24/7', label: 'Automated Operations' },
+  ],
   badges: [
     { text: '✦ AUTOMATION EXPERT', rotate: 6, color: 'yellow' as const },
     { text: 'SYSTEM BUILDER', rotate: -3, color: 'red' as const },

@@ -14,9 +14,6 @@ export function TechStack() {
   return (
     <section id="tech-stack" className="relative overflow-hidden bg-white pt-24 pb-12 md:pt-32 md:pb-16">
 
-      {/* Decorative Thin Lines (Matching Hero) */}
-      <div className="absolute top-0 left-6 md:left-12 w-px h-full bg-gray-100 z-0" />
-      <div className="absolute top-0 right-6 md:right-12 w-px h-full bg-gray-100 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
 

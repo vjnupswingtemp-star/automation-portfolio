@@ -19,6 +19,11 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
 .animate-marquee {
   animation: marquee-scroll 20s linear infinite;
 }

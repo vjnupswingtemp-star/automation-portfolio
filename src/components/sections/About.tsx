@@ -34,10 +34,6 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-hidden py-8 md:py-16 bg-white">
-      {/* Decorative Thin Lines to match global grid */}
-      <div className="absolute top-0 left-6 md:left-12 w-px h-full bg-gray-100 z-0" />
-      <div className="absolute top-0 right-6 md:right-12 w-px h-full bg-gray-100 z-0" />
-
 
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 w-full">
