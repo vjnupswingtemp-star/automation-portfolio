@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Bricolage_Grotesque, Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
-import { ChatWidget } from '@/components/ui'
+import { ChatWidget, CalProvider } from '@/components/ui'
 import './globals.css'
 
 const inter = Inter({
@@ -54,6 +54,7 @@ export default function RootLayout({
       <body>
         {children}
         <ChatWidget />
+        <CalProvider />
         <Analytics />
       </body>
     </html>

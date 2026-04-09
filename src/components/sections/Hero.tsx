@@ -17,10 +17,9 @@ export function Hero() {
 
   return (
     <>
-    <section id="hero" className="relative overflow-hidden min-h-[80vh] md:min-h-screen flex items-center bg-white pb-0 md:pb-12">
+    <section id="hero" className="relative overflow-hidden flex flex-col items-center justify-center bg-white pt-40 pb-16 md:pt-52 md:pb-40">
       
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-32 pb-0 md:pb-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         
         {/* Floating Y2K Element 1 (CD Walkman) */}
         <div className="absolute bottom-[9%] md:bottom-auto top-auto md:top-[12%] right-[-2%] md:-right-8 lg:-right-16 w-24 h-24 md:w-[320px] md:h-[320px] z-20 md:z-30 pointer-events-none rotate-[16deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
@@ -79,12 +78,13 @@ export function Hero() {
                 {/* Glossy Gel Highlight */}
                 <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
               </a>
-              <a
-                href="#contact"
-                className={`inline-flex items-center justify-center px-8 py-4 bg-white border border-gray-200 text-near-black text-sm font-medium rounded-xl hover:bg-gray-50 transition-colors ${focusRing}`}
+              <button
+                data-cal-link="auto-beets-epcwto/30min"
+                data-cal-config='{"layout":"month_view"}'
+                className={`inline-flex items-center justify-center px-8 py-4 bg-white border border-gray-200 text-near-black text-sm font-medium rounded-xl hover:bg-gray-50 transition-colors cursor-pointer ${focusRing}`}
               >
                 {hero.cta.secondary}
-              </a>
+              </button>
             </motion.div>
           </div>
 

@@ -12,7 +12,7 @@ export function TechStack() {
   const loopTools = [...techStack.tools, ...techStack.tools]
 
   return (
-    <section id="tech-stack" className="relative overflow-hidden bg-white pt-24 pb-12 md:pt-32 md:pb-16">
+    <section id="tech-stack" className="relative overflow-hidden bg-white py-16 md:py-24">
 
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">

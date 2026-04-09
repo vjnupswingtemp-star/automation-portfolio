@@ -56,14 +56,15 @@ export function Nav() {
 
           {/* CTA - Far Right */}
           <div className="hidden lg:flex w-1/4 justify-end items-center">
-            <a
-              href={`mailto:${meta.email}`}
-              className={`relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-7 py-2.5 rounded-xl text-[15px] font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.25),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 ${focusRing}`}
+            <button
+              data-cal-link="auto-beets-epcwto/30min"
+              data-cal-config='{"layout":"month_view"}'
+              className={`relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-7 py-2.5 rounded-xl text-[15px] font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.25),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 cursor-pointer ${focusRing}`}
             >
-               <span className="relative z-10 drop-shadow-sm font-sans tracking-wide">Hire Us</span>
+               <span className="relative z-10 drop-shadow-sm font-sans tracking-wide">Book a Call</span>
                {/* Glossy Gel Highlight */}
                <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
-            </a>
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -92,14 +93,15 @@ export function Nav() {
                 {item}
               </a>
             ))}
-            <a
-              href={`mailto:${meta.email}`}
-              className={`mt-4 relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-8 py-3.5 rounded-xl text-center text-lg font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.3),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 ${focusRing}`}
+            <button
+              data-cal-link="auto-beets-epcwto/30min"
+              data-cal-config='{"layout":"month_view"}'
+              className={`mt-4 relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-8 py-3.5 rounded-xl text-center text-lg font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.3),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 cursor-pointer ${focusRing}`}
               onClick={() => setMenuOpen(false)}
             >
-               <span className="relative z-10 drop-shadow-sm font-sans tracking-wide">Hire Us</span>
+               <span className="relative z-10 drop-shadow-sm font-sans tracking-wide">Book a Call</span>
                <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
-            </a>
+            </button>
           </div>
         )}
       </div>
