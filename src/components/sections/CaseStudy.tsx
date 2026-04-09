@@ -24,8 +24,8 @@ export function CaseStudy() {
   const study = caseStudies[currentIndex]
 
   return (
-    <section id="work" className="relative py-16 md:py-24 bg-[#FAFAFA]">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+    <section id="work" className={`relative py-16 md:py-24 bg-[#FAFAFA] ${isExpanded ? 'z-[9999]' : ''}`}>
+      <div className={`relative ${isExpanded ? 'z-[9999]' : 'z-10'} max-w-7xl mx-auto px-6 md:px-12 w-full`}>
 
         {/* Header & Nav */}
         <div className="flex justify-between items-center mb-12 sm:mb-16 w-full">
