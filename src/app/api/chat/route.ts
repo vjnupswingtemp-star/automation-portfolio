@@ -39,9 +39,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const authKey = process.env.N8N_AUTH_KEY
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+    if (authKey) {
+      headers['Authorization'] = `Bearer ${authKey}`
+    }
+
     const upstream = await fetch(webhookUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify({ message }),
     })
 
@@ -54,9 +60,11 @@ export async function POST(request: NextRequest) {
 
     const data = await upstream.json()
     return NextResponse.json(data)
-  } catch {
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error('[chat] fetch error:', msg)
     return NextResponse.json(
-      { error: 'Failed to reach assistant.' },
+      { error: 'Failed to reach assistant.', detail: msg },
       { status: 502 }
     )
   }
