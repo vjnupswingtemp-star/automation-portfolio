@@ -3,7 +3,11 @@ import { NextRequest, NextResponse } from 'next/server'
 const MAX_MESSAGE_LENGTH = 500
 
 export async function POST(request: NextRequest) {
-  const webhookUrl = process.env.N8N_WEBHOOK_URL
+  // Sanitize: strip accidental "KEY = value" format that Vercel sometimes stores
+  let webhookUrl = (process.env.N8N_WEBHOOK_URL ?? '').trim()
+  if (webhookUrl.includes('=')) {
+    webhookUrl = webhookUrl.split('=').slice(1).join('=').trim()
+  }
 
   if (!webhookUrl) {
     return NextResponse.json(
