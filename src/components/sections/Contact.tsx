@@ -44,7 +44,7 @@ export function Contact() {
           </p>
 
           <a
-            href="https://cal.com/auto-beets-epcwto/30min"
+            href="https://cal.com/autobeets/30min"
             target="_blank"
             rel="noopener noreferrer"
             className={`relative overflow-hidden group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white text-sm font-semibold rounded-xl shadow-[0_4px_10px_rgba(41,96,228,0.25),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 cursor-pointer ${focusRing}`}

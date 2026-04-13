@@ -57,7 +57,7 @@ export function Nav() {
           {/* CTA - Far Right */}
           <div className="hidden lg:flex w-1/4 justify-end items-center">
             <a
-              href="https://cal.com/auto-beets-epcwto/30min"
+              href="https://cal.com/autobeets/30min"
               target="_blank"
               rel="noopener noreferrer"
               className={`relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-7 py-2.5 rounded-xl text-[15px] font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.25),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 cursor-pointer ${focusRing}`}
@@ -95,7 +95,7 @@ export function Nav() {
               </a>
             ))}
             <a
-              href="https://cal.com/auto-beets-epcwto/30min"
+              href="https://cal.com/autobeets/30min"
               target="_blank"
               rel="noopener noreferrer"
               className={`mt-4 relative overflow-hidden group bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white px-8 py-3.5 rounded-xl text-center text-lg font-semibold shadow-[0_4px_10px_rgba(41,96,228,0.3),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-[transform,shadow] hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] active:scale-95 cursor-pointer ${focusRing}`}
