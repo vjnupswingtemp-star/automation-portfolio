@@ -88,7 +88,7 @@ export function Pricing() {
              </span>
           </div>
           <div className="flex flex-col items-center text-center w-full">
-            <h2 className="font-serif font-normal tracking-normal text-5xl md:text-6xl text-near-black leading-[1.1] mb-6">
+            <h2 className="font-serif font-normal tracking-normal text-3xl md:text-5xl text-near-black leading-[1.1] mb-6">
               AI Automation Services
             </h2>
             <p className="font-sf text-base md:text-xl text-near-black/60 max-w-2xl text-center mx-auto">
