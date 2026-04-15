@@ -29,34 +29,6 @@ export const techStack = {
   headline: 'The reliable software that works silently in the background.',
   tools: [
     { 
-      name: 'n8n', 
-      logo: '/logos/transparent_n8n.png', 
-      desc: 'The glue that connects all your different apps together so they can talk to each other.',
-      bg: 'bg-[#F2FBF7]', // Soft mint
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'OpenAI', 
-      logo: '/logos/transparent_openai.png', 
-      desc: 'We use this to write draft emails, summarize long documents, and handle repetitive typing.',
-      bg: 'bg-white',
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'Claude (Anthropic)', 
-      logo: '/logos/transparent_anthropic.png', 
-      desc: 'We use this to read complex data and spreadsheets so a human does not have to.',
-      bg: 'bg-[#FFF6ED]', // Soft peach
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'Gemini', 
-      logo: '/logos/transparent_gemini.png', 
-      desc: 'We use this incredibly fast brain to write perfect emails, analyze text, and generate creative ideas on the fly.',
-      bg: 'bg-[#F0F4FF]', // Soft blue
-      span: 'md:col-span-1'
-    },
-    { 
       name: 'Notion', 
       logo: '/logos/transparent_notion.png', 
       desc: 'A digital workspace where your computer automatically organizes all your important docs, notes, and tasks.',

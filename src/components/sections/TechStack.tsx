@@ -90,7 +90,7 @@ export function TechStack() {
             </div>
 
             {/* Desktop: Minimalist Raw Grid */}
-            <div className="hidden md:grid md:grid-cols-3 gap-x-8 gap-y-12">
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16">
               {techStack.tools.map((tool, idx) => (
                 <motion.div
                   key={tool.name}
