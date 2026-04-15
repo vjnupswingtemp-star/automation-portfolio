@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     
     // In the future, you can replace this URL with your actual n8n Webhook URL
     // e.g., const webhookUrl = process.env.N8N_WEBHOOK_URL || 'https://your-n8n-instance.com/webhook/free-audit';
-    const webhookUrl = process.env.N8N_WEBHOOK_URL;
+    const webhookUrl = process.env.N8N_AUDIT_WEBHOOK_URL;
 
     console.log('Received Audit Request:', data);
 
