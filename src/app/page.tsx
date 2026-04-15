@@ -6,7 +6,8 @@ import { CaseStudy } from '@/components/sections/CaseStudy'
 import { Testimonial } from '@/components/sections/Testimonial'
 import { About } from '@/components/sections/About'
 import { ROICalculator } from '@/components/sections/ROICalculator'
-import { Contact } from '@/components/sections/Contact'
+import { Pricing } from '@/components/sections/Pricing'
+import { FreeAuditSection } from '@/components/sections/FreeAuditSection'
 
 export default function Home() {
   return (
@@ -19,8 +20,9 @@ export default function Home() {
         <CaseStudy />
         <Testimonial />
         <About />
+        <Pricing />
         <ROICalculator />
-        <Contact />
+        <FreeAuditSection />
       </main>
     </>
   )

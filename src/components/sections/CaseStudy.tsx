@@ -65,7 +65,7 @@ export function CaseStudy() {
                 <Image src="/images/simple_construction_sign.png" alt="Problem Icon" fill className="object-contain p-3 sm:p-3.5 mix-blend-multiply opacity-90" />
               </div>
               <div className="flex-grow">
-                <span className="inline-block bg-gray-100 text-gray-600 font-sf font-semibold text-xs px-3 py-1.5 rounded-full mb-4">Challenge</span>
+                <span className="inline-block bg-[#F3F4F6] border border-gray-300 text-near-black shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,1),inset_-1px_-1px_0px_0px_rgba(0,0,0,0.1)] rounded px-3 py-1 text-[10px] font-sans font-bold tracking-widest uppercase mb-4">Challenge</span>
                 <h3 className="font-serif font-semibold text-xl sm:text-2xl text-[#3662E3] mb-3">The Problem</h3>
                 <p className="font-sf font-light text-gray-600 text-sm sm:text-[15px] leading-relaxed">{study.problem}</p>
               </div>
@@ -76,7 +76,7 @@ export function CaseStudy() {
                 <Image src="/images/simple_excavator.png" alt="Solution Icon" fill className="object-contain p-3 sm:p-3.5 mix-blend-multiply opacity-90" />
               </div>
               <div className="flex-grow">
-                <span className="inline-block bg-gray-100 text-gray-600 font-sf font-semibold text-xs px-3 py-1.5 rounded-full mb-4">Solution</span>
+                <span className="inline-block bg-[#F3F4F6] border border-gray-300 text-near-black shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,1),inset_-1px_-1px_0px_0px_rgba(0,0,0,0.1)] rounded px-3 py-1 text-[10px] font-sans font-bold tracking-widest uppercase mb-4">Solution</span>
                 <h3 className="font-serif font-semibold text-xl sm:text-2xl text-[#3662E3] mb-3">What We Built</h3>
                 <p className="font-sf font-light text-gray-600 text-sm sm:text-[15px] leading-relaxed">{study.solution}</p>
               </div>
@@ -87,7 +87,7 @@ export function CaseStudy() {
                 <Image src="/images/simple_building.png" alt="Outcome Icon" fill className="object-contain p-3 sm:p-3.5 mix-blend-multiply opacity-90" />
               </div>
               <div className="flex-grow">
-                <span className="inline-block bg-gray-100 text-gray-600 font-sf font-semibold text-xs px-3 py-1.5 rounded-full mb-4">Outcome</span>
+                <span className="inline-block bg-[#F3F4F6] border border-gray-300 text-near-black shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,1),inset_-1px_-1px_0px_0px_rgba(0,0,0,0.1)] rounded px-3 py-1 text-[10px] font-sans font-bold tracking-widest uppercase mb-4">Outcome</span>
                 <h3 className="font-serif font-semibold text-xl sm:text-2xl text-[#3662E3] mb-3">The Result</h3>
                 <p className="font-sf font-light text-gray-600 text-sm sm:text-[15px] leading-relaxed">{study.result}</p>
               </div>

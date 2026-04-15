@@ -1,0 +1,117 @@
+{
+  "name": "Free AI Audit Lead Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "free-audit",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "c4b3a72d-8f92-4d2c-9a1b-3c4d5e6f7a8b"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "sheetId": {
+          "__rl": true,
+          "value": "",
+          "mode": "id"
+        },
+        "range": "A:H",
+        "options": {}
+      },
+      "id": "e30129dc-e62a-43d9-ab71-70e6a8e0d6c1",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "messageValues": [
+            {
+              "content": "=\"Please create a brief, highly compelling 3-paragraph automation proposal. The prospect is a \"+ $json[\"body\"][\"businessDesc\"] + \" company. They waste \" + $json[\"body\"][\"hoursWasted\"] + \" per week doing \" + $json[\"body\"][\"manualTasks\"] + \". Their current tech stack includes \" + $json[\"body\"][\"currentTools\"] + \". Show them how we can automate their workflow.\""
+            }
+          ]
+        }
+      },
+      "id": "8bb98198-601e-45fd-9ea0-3fbf71a804ed",
+      "name": "OpenAI",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "sheetId": {
+          "__rl": true,
+          "value": "",
+          "mode": "id"
+        },
+        "range": "I:I",
+        "options": {}
+      },
+      "id": "f8a0ff11-ce17-48f8-b39f-4318c5c7d0d9",
+      "name": "Update Sheets with Proposal",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        850,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Update Sheets with Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}
