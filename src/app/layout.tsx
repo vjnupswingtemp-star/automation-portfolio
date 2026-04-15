@@ -3,6 +3,8 @@ import { Inter, Bricolage_Grotesque, Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
 import { ChatWidget } from '@/components/ui'
+import { AuditModalProvider } from '@/lib/AuditModalContext'
+import { AuditModal } from '@/components/ui/AuditModal'
 import './globals.css'
 
 const inter = Inter({
@@ -52,8 +54,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${bricolage.variable} ${playfair.variable} ${bitroad.variable} scroll-smooth`}>
       <body>
-        {children}
-        <ChatWidget />
+        <AuditModalProvider>
+          {children}
+          <ChatWidget />
+          <AuditModal />
+        </AuditModalProvider>
         <Analytics />
       </body>
     </html>

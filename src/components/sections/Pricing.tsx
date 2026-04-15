@@ -81,18 +81,20 @@ export function Pricing() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         
         {/* Header */}
-        <div className="mb-16 md:mb-24 flex flex-col items-start w-full">
-          <div className="mb-8 md:mb-12 flex">
+        <div className="mb-16 md:mb-24 w-full">
+          <div className="mb-8 md:mb-12 flex justify-start w-full">
              <span className="inline-block border-2 border-[#3662E3] bg-white text-[#3662E3] shadow-[4px_4px_0px_0px_#3662E3] rounded-sm px-4 py-1.5 text-xs font-bitroad tracking-widest uppercase relative -left-1">
                Pricing Guide
              </span>
           </div>
-          <h2 className="font-serif font-normal tracking-normal text-5xl md:text-6xl text-near-black leading-[1.1] mb-6">
-            AI Automation Services
-          </h2>
-          <p className="font-sf text-base md:text-xl text-near-black/60 max-w-2xl text-left">
-            All prices in USD. Fully managed by us — you focus on your business.
-          </p>
+          <div className="flex flex-col items-center text-center w-full">
+            <h2 className="font-serif font-normal tracking-normal text-5xl md:text-6xl text-near-black leading-[1.1] mb-6">
+              AI Automation Services
+            </h2>
+            <p className="font-sf text-base md:text-xl text-near-black/60 max-w-2xl text-center mx-auto">
+              All prices in USD. Fully managed by us — you focus on your business.
+            </p>
+          </div>
         </div>
 
         {/* Packages Grid */}
