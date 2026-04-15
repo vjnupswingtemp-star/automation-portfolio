@@ -32,14 +32,14 @@ export function FreeAuditSection() {
           Discover The Hidden Potential Of Your Workflows.
         </h2>
         <p className="font-sf text-base md:text-lg text-muted mb-10 max-w-2xl mx-auto">
-          We use AI to analyze your current systems and instantly generate a Custom Automation Roadmap tailored strictly to your business. 
+          Our team will analyze your current systems and generate a Custom Automation Roadmap tailored strictly to your business. 
         </p>
 
         <button
           onClick={openModal}
           className={`relative overflow-hidden group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-b from-[#5c98f8] to-[#2960e4] text-white text-[15px] font-semibold rounded-xl shadow-[0_4px_10px_rgba(41,96,228,0.25),inset_0_2px_3px_rgba(255,255,255,0.7),inset_0_-2px_4px_rgba(0,0,0,0.15)] border border-[#1e48b8]/40 transition-all hover:shadow-[0_6px_14px_rgba(41,96,228,0.4),inset_0_2px_3px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.15)] hover:scale-[1.02] active:scale-95 ${focusRing}`}
         >
-          <span className="relative z-10 drop-shadow-sm tracking-wide">Start Your Free AI Audit</span>
+          <span className="relative z-10 drop-shadow-sm tracking-wide">Start Your Free Audit</span>
           <div className="absolute top-[1px] left-[1px] right-[1px] h-[45%] bg-gradient-to-b from-white/45 to-white/0 rounded-t-[11px] pointer-events-none" />
         </button>
       </div>

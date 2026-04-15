@@ -121,7 +121,7 @@ export function AuditModal() {
                 </div>
                 <h3 className="font-serif text-3xl text-white mb-2">Audit Requested!</h3>
                 <p className="text-muted text-[15px] mb-8">
-                  Our AI has received your workflow data. We will evaluate your submission, verify the AI generation, and send a full free proposal to your inbox shortly.
+                  Our team has received your workflow data. We will carefully review your submission, build out a custom automation strategy, and send a full free proposal to your inbox shortly.
                 </p>
                 <button
                   onClick={handleClose}
@@ -144,7 +144,7 @@ export function AuditModal() {
                   {step === 1 ? "Let's Get Started" : "The Core Issue"}
                 </h3>
                 <p className="text-sm text-muted mb-8">
-                  {step === 1 ? "Help us customize our AI model's understanding of your business." : "Tell us exactly where you are losing time."}
+                  {step === 1 ? "Help us customize our team's understanding of your business." : "Tell us exactly where you are losing time."}
                 </p>
 
                 <form onSubmit={step === 2 ? handleSubmit : (e) => { e.preventDefault(); handleNext(); }} className="flex flex-col gap-5">
