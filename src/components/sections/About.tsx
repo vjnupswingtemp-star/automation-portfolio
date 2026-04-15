@@ -36,7 +36,7 @@ export function About() {
     <section id="about" className="relative overflow-hidden py-20 md:py-32 bg-white">
 
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         {/* Section label (Neo-Brutalist Y2K Badge) */}
         <div className="mb-8 md:mb-16 flex justify-between items-end">
           <motion.div
