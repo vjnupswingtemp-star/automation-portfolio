@@ -33,7 +33,7 @@ export function About() {
   const shouldReduce = false // useReducedMotion()
 
   return (
-    <section id="about" className="relative overflow-hidden py-20 md:py-32 bg-white">
+    <section id="about" className="relative overflow-hidden py-8 md:py-16 bg-white">
 
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">

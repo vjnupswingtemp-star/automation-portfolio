@@ -77,7 +77,7 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section id="pricing" className="relative py-8 md:py-16 bg-white overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         
         {/* Header */}
