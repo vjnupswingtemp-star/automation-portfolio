@@ -162,17 +162,31 @@ export function ChatWidget() {
                             disallowedElements={['script', 'iframe', 'object', 'embed', 'form', 'input', 'button']} 
                             unwrapDisallowed
                             components={msg.sender === 'bot' ? {
-                              a: ({node, href, children, ...props}) => (
-                                <a
-                                  {...props}
-                                  href={href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="my-3 flex items-center justify-center w-full px-4 py-3 bg-[#3662E3] hover:bg-[#2952cf] text-white text-[14px] font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(54,98,227,0.39)] hover:shadow-[0_6px_20px_rgba(54,98,227,0.23)] hover:-translate-y-[1px] active:translate-y-0 no-underline"
-                                >
-                                  {children}
-                                </a>
-                              )
+                              a: ({node, href, children, ...props}) => {
+                                // Extract original text to check if it's generic
+                                const rawText = Array.isArray(children) ? children[0] : children;
+                                let buttonText: any = 'Book a Free Call ⚡';
+                                
+                                if (typeof rawText === 'string') {
+                                  const lower = rawText.toLowerCase();
+                                  // Keep original text only if it's not a generic placeholder and is somewhat descriptive
+                                  if (!lower.includes('this link') && !lower.includes('here') && lower !== 'link' && rawText.length > 15) {
+                                    buttonText = children;
+                                  }
+                                }
+
+                                return (
+                                  <a
+                                    {...props}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="my-3 flex items-center justify-center w-full px-4 py-3 bg-[#3662E3] hover:bg-[#2952cf] text-white text-[14px] font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(54,98,227,0.39)] hover:shadow-[0_6px_20px_rgba(54,98,227,0.23)] hover:-translate-y-[1px] active:translate-y-0 no-underline"
+                                  >
+                                    {buttonText}
+                                  </a>
+                                )
+                              }
                             } : {}}
                           >
                             {cleaned}
