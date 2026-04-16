@@ -30,7 +30,7 @@ export function Pricing() {
     {
       name: 'Custom',
       badge: 'Enterprise',
-      price: '25,000+',
+      price: 'Contact Us',
       priceRange: '',
       description: 'We design and build everything from scratch around how your business specifically works. Fully bespoke, fully managed — nothing off the shelf.',
       features: ['4–8 weeks delivery', 'Unlimited revisions', '120 days free fixes', 'Complex multi-dept companies'],
@@ -127,15 +127,17 @@ export function Pricing() {
                 {/* Price */}
                 <div className="mb-8">
                   <div className="flex items-start">
-                    <span className="font-sans font-medium text-lg text-near-black group-hover:text-blue-100 mt-1 mr-1.5 transition-colors duration-300">$</span>
+                    {pkg.price !== 'Contact Us' && (
+                      <span className="font-sans font-medium text-lg text-near-black group-hover:text-blue-100 mt-1 mr-1.5 transition-colors duration-300">$</span>
+                    )}
                     <span 
-                      className="font-bitroad text-[3.5rem] leading-none tracking-wide text-[#3662E3] group-hover:text-white transition-colors duration-300"
+                      className={`font-bitroad ${pkg.price === 'Contact Us' ? 'text-[2rem] sm:text-[2.25rem] mt-1' : 'text-[3.5rem]'} leading-none tracking-wide text-[#3662E3] group-hover:text-white transition-colors duration-300`}
                     >
                       {pkg.price}
                     </span>
                   </div>
                   <span className="block text-near-black/50 group-hover:text-white/70 font-sf text-sm mt-2 transition-colors duration-300">
-                    {pkg.priceRange ? `${pkg.priceRange} +` : 'Fully Custom'}
+                    {pkg.price === 'Contact Us' ? 'Fully Custom' : (pkg.priceRange ? `${pkg.priceRange} +` : 'Fully Custom')}
                   </span>
                 </div>
 

@@ -155,15 +155,34 @@ export function ChatWidget() {
                       const parsed = msg.sender === 'bot' ? parseButtonTag(msg.text) : null
                       const rawText = parsed ? parsed.body : msg.text
                       const cleaned = rawText.replace(/\\n/g, '\n').replace(/\\\*/g, '*').replace(/(?<!\n)(\d+\.\s+\*\*)/g, '\n\n$1').replace(/(?<!\n)(-\s+\*\*)/g, '\n\n$1')
+
                       return (
                         <>
-                          <ReactMarkdown disallowedElements={['script', 'iframe', 'object', 'embed', 'form', 'input', 'button']} unwrapDisallowed>{cleaned}</ReactMarkdown>
+                          <ReactMarkdown 
+                            disallowedElements={['script', 'iframe', 'object', 'embed', 'form', 'input', 'button']} 
+                            unwrapDisallowed
+                            components={msg.sender === 'bot' ? {
+                              a: ({node, href, children, ...props}) => (
+                                <a
+                                  {...props}
+                                  href={href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="my-3 flex items-center justify-center w-full px-4 py-3 bg-[#3662E3] hover:bg-[#2952cf] text-white text-[14px] font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(54,98,227,0.39)] hover:shadow-[0_6px_20px_rgba(54,98,227,0.23)] hover:-translate-y-[1px] active:translate-y-0 no-underline"
+                                >
+                                  {children}
+                                </a>
+                              )
+                            } : {}}
+                          >
+                            {cleaned}
+                          </ReactMarkdown>
                           {parsed && (
                             <a
                               href={parsed.buttonUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="mt-3 flex items-center justify-center w-full px-4 py-2.5 bg-[#3662E3] hover:bg-[#2952cf] text-white text-[13px] font-semibold rounded-lg transition-colors"
+                              className="mt-3 flex items-center justify-center w-full px-4 py-3 bg-[#3662E3] hover:bg-[#2952cf] text-white text-[14px] font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(54,98,227,0.39)] hover:shadow-[0_6px_20px_rgba(54,98,227,0.23)] hover:-translate-y-[1px] active:translate-y-0 no-underline"
                             >
                               {parsed.buttonLabel}
                             </a>

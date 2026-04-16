@@ -26,7 +26,7 @@ export function ROICalculator() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         
         {/* Header */}
-        <div className="mb-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-12 text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <span className="inline-block border-2 border-[#3662E3] bg-white text-[#3662E3] shadow-[3px_3px_0px_0px_#3662E3] rounded-sm px-4 py-1.5 text-xs font-bitroad tracking-widest uppercase mb-6">
               The Sales Gap

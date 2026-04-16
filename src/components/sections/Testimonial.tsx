@@ -14,7 +14,7 @@ export function Testimonial() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         
-        <div className="mb-10 lg:mb-12 flex justify-center lg:justify-start items-end">
+        <div className="mb-10 lg:mb-12 flex justify-start items-end">
           <motion.div 
             initial={shouldReduce ? { opacity: 1 } : { opacity: 1, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
