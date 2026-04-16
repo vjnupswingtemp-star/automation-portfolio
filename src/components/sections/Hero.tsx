@@ -19,12 +19,12 @@ export function Hero() {
 
   return (
     <>
-    <section id="hero" className="relative overflow-hidden flex flex-col items-center justify-center bg-white pt-40 pb-16 md:pt-52 md:pb-40">
+    <section id="hero" className="relative overflow-hidden flex flex-col items-center justify-center bg-white min-h-[100svh] md:min-h-0 pt-24 pb-24 md:pt-52 md:pb-40">
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         
         {/* Floating Y2K Element 1 (CD Walkman) */}
-        <div className="absolute bottom-[9%] md:bottom-auto top-auto md:top-[12%] right-[-2%] md:-right-8 lg:-right-16 w-24 h-24 md:w-[320px] md:h-[320px] z-20 md:z-30 pointer-events-none rotate-[16deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
+        <div className="absolute -bottom-24 md:bottom-auto top-auto md:top-[12%] right-[4%] md:-right-8 lg:-right-16 w-32 h-32 md:w-[320px] md:h-[320px] z-20 md:z-30 pointer-events-none rotate-[16deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
           <Image 
             src="/images/y2k_cd_walkman_transparent.png" 
             alt="Y2K CD Walkman" 
@@ -34,7 +34,7 @@ export function Hero() {
         </div>
 
         {/* Floating Y2K Element (Tamagotchi) */}
-        <div className="absolute bottom-[9%] md:bottom-auto top-auto md:top-[12%] left-[-2%] md:-left-4 lg:-left-8 w-20 h-20 md:w-56 md:h-56 z-20 md:z-30 pointer-events-none rotate-[-12deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
+        <div className="absolute -bottom-24 md:bottom-auto top-auto md:top-[12%] left-[4%] md:-left-4 lg:-left-8 w-28 h-28 md:w-56 md:h-56 z-20 md:z-30 pointer-events-none rotate-[-12deg] opacity-[0.95] transition-[transform,opacity] duration-1000">
           <Image 
             src="/images/y2k_tamagotchi.png" 
             alt="Y2K Tamagotchi" 

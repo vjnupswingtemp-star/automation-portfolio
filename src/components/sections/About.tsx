@@ -58,7 +58,7 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={shouldReduce ? { duration: 0 } : { duration: 0.6, delay: 0.1, ease: 'easeOut' as const }}
-            className="md:col-span-2 flex flex-col justify-center max-w-2xl"
+            className="md:col-span-2 flex flex-col justify-center max-w-2xl text-center md:text-left mx-auto md:mx-0"
           >
             <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-near-black leading-none mb-8">
               A collective of <span className="text-gray-400 italic">builders</span> & <span className="text-[#3662E3] italic">automators</span>.

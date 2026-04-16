@@ -11,6 +11,16 @@ type Message = {
   sender: 'bot' | 'user'
 }
 
+function parseButtonTag(text: string): { body: string; buttonLabel: string; buttonUrl: string } | null {
+  const match = text.match(/\[BUTTON:\s*(.+?)\s*\|\s*(https?:\/\/\S+)\s*\]/i)
+  if (!match) return null
+  return {
+    body: text.replace(match[0], '').trimEnd(),
+    buttonLabel: match[1].trim(),
+    buttonUrl: match[2].trim(),
+  }
+}
+
 export function ChatWidget() {
   const shouldReduce = false // useReducedMotion()
   const [isOpen, setIsOpen] = useState(false)
@@ -134,14 +144,33 @@ export function ChatWidget() {
                       <Bot className="w-3.5 h-3.5 text-blue-600" />
                     </div>
                   )}
-                  <div 
+                  <div
                     className={`max-w-[85%] px-4 py-3 rounded-xl text-[14px] leading-[1.6] shadow-sm ${
-                      msg.sender === 'user' 
-                        ? 'bg-[#3662E3] text-white rounded-br-sm' 
+                      msg.sender === 'user'
+                        ? 'bg-[#3662E3] text-white rounded-br-sm'
                         : 'bg-white text-gray-800 border border-gray-100 rounded-bl-sm [&_p]:mb-3 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_strong]:text-black [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-3 [&_li]:mb-1.5'
                     }`}
                   >
-                    <ReactMarkdown disallowedElements={['script', 'iframe', 'object', 'embed', 'form', 'input', 'button']} unwrapDisallowed>{msg.text.replace(/\\n/g, '\n').replace(/\\\*/g, '*').replace(/(?<!\n)(\d+\.\s+\*\*)/g, '\n\n$1').replace(/(?<!\n)(-\s+\*\*)/g, '\n\n$1')}</ReactMarkdown>
+                    {(() => {
+                      const parsed = msg.sender === 'bot' ? parseButtonTag(msg.text) : null
+                      const rawText = parsed ? parsed.body : msg.text
+                      const cleaned = rawText.replace(/\\n/g, '\n').replace(/\\\*/g, '*').replace(/(?<!\n)(\d+\.\s+\*\*)/g, '\n\n$1').replace(/(?<!\n)(-\s+\*\*)/g, '\n\n$1')
+                      return (
+                        <>
+                          <ReactMarkdown disallowedElements={['script', 'iframe', 'object', 'embed', 'form', 'input', 'button']} unwrapDisallowed>{cleaned}</ReactMarkdown>
+                          {parsed && (
+                            <a
+                              href={parsed.buttonUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-3 flex items-center justify-center w-full px-4 py-2.5 bg-[#3662E3] hover:bg-[#2952cf] text-white text-[13px] font-semibold rounded-lg transition-colors"
+                            >
+                              {parsed.buttonLabel}
+                            </a>
+                          )}
+                        </>
+                      )
+                    })()}
                   </div>
                 </div>
               ))}

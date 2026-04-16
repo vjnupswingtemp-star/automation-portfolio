@@ -92,7 +92,7 @@ export function Pricing() {
               AI Automation Services
             </h2>
             <p className="font-sf text-base md:text-xl text-near-black/60 max-w-2xl text-center mx-auto">
-              All prices in USD. Fully managed by us — you focus on your business.
+              Fully managed by us — you focus on your business.
             </p>
           </div>
         </div>
