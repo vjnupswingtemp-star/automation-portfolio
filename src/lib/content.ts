@@ -201,3 +201,30 @@ export const contact = {
   subtext: "Stop wasting money and time on manual work. Let's set up a computer system that does it for you.",
   cta: 'Send Us a Message →',
 }
+
+// ---------- The Desk redesign (2027) ----------
+
+export type DeskNote =
+  | { kind: 'sticky'; color: 'yellow' | 'pink' | 'green'; text: string }
+  | { kind: 'sheet'; title: string; body: string; hand: string }
+
+export const deskHero = {
+  badgeBefore: 'Your week, before',
+  badgeAfter: 'Your week, after',
+  headline: 'We Automate.',
+  grow: 'You Grow.',
+  subBefore: 'Every note on this desk is a job a machine should be doing.',
+  subAfter: 'Same work. Done by machines, lined up, finished.',
+  hint: 'Scroll, and watch the desk sort itself out',
+  ctaAudit: 'Start your free audit',
+  ctaCall: 'Book a call',
+  callUrl: 'https://cal.com/autobeets/30min',
+  notes: [
+    { kind: 'sticky', color: 'yellow', text: 'Copy invoice totals into the sheet' },
+    { kind: 'sheet', title: 'WORK ORDER', body: '6 pages · retype into system', hand: 'do this today!!' },
+    { kind: 'sticky', color: 'pink', text: "Who's booked Thursday??" },
+    { kind: 'sticky', color: 'green', text: 'Call 3 suppliers for a price' },
+    { kind: 'sheet', title: 'NEW LEAD', body: 'Came in 2 days ago', hand: 'nobody replied' },
+    { kind: 'sticky', color: 'yellow', text: "RE: RE: where's my quote?" },
+  ] as DeskNote[],
+}
