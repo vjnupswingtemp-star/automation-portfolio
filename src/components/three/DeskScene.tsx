@@ -71,7 +71,9 @@ export default function DeskScene() {
     const render = () => {
       const t = clock.getElapsedTime()
       const narrow = window.innerWidth < NARROW
-      const p = sectionProgress(hero.getBoundingClientRect().top, hero.offsetHeight, window.innerHeight)
+      // Same progress as the DOM notes: measured against the pinned stage, not innerHeight.
+      const stageH = document.getElementById('hero-stage')?.clientHeight || window.innerHeight
+      const p = sectionProgress(hero.getBoundingClientRect().top, hero.offsetHeight, stageH)
       const pose = heroPose(p, narrow, viewW, viewH)
       const { x: mx, y: my } = pointer
 

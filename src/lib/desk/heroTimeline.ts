@@ -43,7 +43,15 @@ export function heroCopy(p: number) {
   }
 }
 
-export const railTop = (vpH: number, narrow: boolean): number => (narrow ? 0.71 : 0.82) * vpH
+/**
+ * The hero's layout box: viewport width (matches CSS media queries) and the pinned stage's real height.
+ * On phones `innerHeight` changes as the toolbar collapses while the 100svh stage does not.
+ */
+export function heroViewport(win: { innerWidth: number; innerHeight: number }, stageHeight: number): Size {
+  return { w: win.innerWidth, h: stageHeight > 0 ? stageHeight : win.innerHeight }
+}
+
+export const railTop =(vpH: number, narrow: boolean): number => (narrow ? 0.71 : 0.82) * vpH
 
 export const toWorld = (fx: number, fy: number, viewW: number, viewH: number): [number, number] => [
   (fx - 0.5) * viewW,

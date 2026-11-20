@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { heroCopy, heroPose, noteTransform, railTop, toWorld } from './heroTimeline'
+import { heroCopy, heroPose, heroViewport, noteTransform, railTop, toWorld } from './heroTimeline'
 import { deskHero } from '../content'
 
 const vp = { w: 1000, h: 800 }
@@ -60,6 +60,15 @@ describe('railTop / toWorld', () => {
   it('maps screen fractions to world units around the centre', () => {
     expect(toWorld(0.5, 0.5, 10, 6)).toEqual([0, 0])
     expect(toWorld(0, 0, 10, 6)).toEqual([-5, 3])
+  })
+})
+
+describe('heroViewport', () => {
+  it('uses the pinned stage height, not innerHeight (phone toolbar collapsed)', () => {
+    expect(heroViewport({ innerWidth: 390, innerHeight: 844 }, 760)).toEqual({ w: 390, h: 760 })
+  })
+  it('falls back to innerHeight before the stage is measured', () => {
+    expect(heroViewport({ innerWidth: 390, innerHeight: 844 }, 0)).toEqual({ w: 390, h: 844 })
   })
 })
 

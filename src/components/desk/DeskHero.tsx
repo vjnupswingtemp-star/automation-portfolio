@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { deskHero } from '@/lib/content'
 import { useAuditModal } from '@/lib/AuditModalContext'
 import { sectionProgress } from '@/lib/desk/motion'
-import { heroCopy, NARROW, noteTransform, railTop } from '@/lib/desk/heroTimeline'
+import { heroCopy, heroViewport, NARROW, noteTransform, railTop } from '@/lib/desk/heroTimeline'
 import { useScrollFrame } from '@/lib/desk/useScrollFrame'
 import { DeskNoteCard } from './DeskNoteCard'
 
@@ -20,6 +20,7 @@ export function DeskHero() {
   const { openModal } = useAuditModal()
 
   const sectionRef = useRef<HTMLElement>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLSpanElement>(null)
   const badgeBeforeRef = useRef<HTMLSpanElement>(null)
   const badgeAfterRef = useRef<HTMLSpanElement>(null)
@@ -33,7 +34,7 @@ export function DeskHero() {
   const frame = useCallback(() => {
     const section = sectionRef.current
     if (!section) return
-    const vp = { w: window.innerWidth, h: window.innerHeight }
+    const vp = heroViewport(window, stageRef.current?.clientHeight ?? 0)
     const narrow = vp.w < NARROW
     const p = reduced ? 1 : sectionProgress(section.getBoundingClientRect().top, section.offsetHeight, vp.h)
 
@@ -71,9 +72,14 @@ export function DeskHero() {
     <section
       id="hero"
       ref={sectionRef}
-      className={`desk-hero relative z-[2] ${reduced ? 'min-h-[100svh]' : 'h-[300vh]'}`}
+      // Pinning is switched off by CSS (motion-reduce:), so server and client markup always match.
+      className="desk-hero relative z-[2] h-[300vh] motion-reduce:h-auto motion-reduce:min-h-[100svh]"
     >
-      <div className={`${reduced ? 'relative' : 'sticky top-0'} h-[100svh] overflow-hidden`}>
+      <div
+        id="hero-stage"
+        ref={stageRef}
+        className="sticky top-0 h-[100svh] overflow-hidden motion-reduce:relative"
+      >
         <div className="pointer-events-none absolute inset-x-0 top-[17%] z-[5] px-4 text-center max-[820px]:top-[23%]">
           <span
             ref={badgeRef}
