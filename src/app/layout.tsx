@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Bricolage_Grotesque, Playfair_Display } from 'next/font/google'
+import { Inter, Bricolage_Grotesque, Playfair_Display, Caveat } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
 import { ChatWidget } from '@/components/ui'
@@ -23,6 +23,13 @@ const bricolage = Bricolage_Grotesque({
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
+  display: 'swap',
+})
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['500', '700'],
+  variable: '--font-caveat',
   display: 'swap',
 })
 
@@ -52,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bricolage.variable} ${playfair.variable} ${bitroad.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${bricolage.variable} ${playfair.variable} ${caveat.variable} ${bitroad.variable} scroll-smooth`}>
       <body>
         <AuditModalProvider>
           {children}

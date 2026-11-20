@@ -24,6 +24,7 @@ const config: Config = {
         body: ['var(--font-inter)', 'sans-serif'],
         serif: ['var(--font-playfair)', 'serif'],
         bitroad: ['var(--font-bitroad)', 'monospace'],
+        hand: ['var(--font-caveat)', 'cursive'],
         sf: ['-apple-system', 'BlinkMacSystemFont', '"San Francisco"', '"SF Pro Text"', 'sans-serif'],
         // font-mono keeps Tailwind default monospace stack
       },
