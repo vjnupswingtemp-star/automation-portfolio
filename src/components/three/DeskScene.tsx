@@ -106,6 +106,9 @@ export default function DeskScene() {
       renderer.render(scene, camera)
     }
 
+    // Fade in once the first frame is drawn, so the desk doesn't pop in.
+    requestAnimationFrame(() => requestAnimationFrame(() => (wrap.style.opacity = '1')))
+
     let running = false
     const setMode = (mode: SceneMode) => {
       wrap.style.visibility = mode === 'off' ? 'hidden' : 'visible'
@@ -136,7 +139,7 @@ export default function DeskScene() {
   }, [])
 
   return (
-    <div ref={wrapRef} className="h-full w-full">
+    <div ref={wrapRef} className="h-full w-full opacity-0 transition-opacity duration-500">
       <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   )

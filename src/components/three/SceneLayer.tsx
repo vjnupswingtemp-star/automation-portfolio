@@ -24,7 +24,19 @@ export function SceneLayer() {
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    setEnabled(canUse3D({ reducedMotion: reduced === true, webgl: detectWebGL() }))
+    if (!canUse3D({ reducedMotion: reduced === true, webgl: detectWebGL() })) {
+      setEnabled(false)
+      return
+    }
+    // Start the 3D on the visitor's first interaction, not on load: three.js setup is the heaviest
+    // work on the page, and the hero reads complete without it (notes + headline are plain HTML).
+    const events = ['pointermove', 'pointerdown', 'touchstart', 'wheel', 'scroll', 'keydown'] as const
+    const start = () => {
+      events.forEach((e) => window.removeEventListener(e, start))
+      setEnabled(true)
+    }
+    events.forEach((e) => window.addEventListener(e, start, { passive: true }))
+    return () => events.forEach((e) => window.removeEventListener(e, start))
   }, [reduced])
 
   if (!enabled) return null

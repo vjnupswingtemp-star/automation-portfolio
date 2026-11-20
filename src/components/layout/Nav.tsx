@@ -5,6 +5,12 @@ import { Menu, X } from 'lucide-react'
 import { focusRing } from '@/lib/tokens'
 import { meta } from '@/lib/content'
 
+const LINKS = [
+  { label: 'Services', href: '#services' },
+  { label: 'Work', href: '#work' },
+  { label: 'Pricing', href: '#pricing' },
+]
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -22,17 +28,18 @@ export function Nav() {
           scrolled ? 'shadow-md shadow-near-black/5' : 'shadow-xl shadow-near-black/10'
         }`}
       >
-        <nav className="w-full h-16 md:h-20 flex items-center px-6 md:px-8">
+        <nav aria-label="Main" className="w-full h-14 md:h-16 flex items-center px-6 md:px-8">
           
           {/* Logo - Far Left */}
           <div className="w-1/4 flex items-center">
             <a
-              href="#"
+              href="#hero"
+              aria-label="autobeets — back to top"
               className={`block focus:outline-none ${focusRing}`}
             >
               <Image 
                 src="/logos/autologo.svg" 
-                alt="Logo" 
+                alt="" 
                 width={120} 
                 height={40} 
                 className="h-10 w-auto"
@@ -43,13 +50,13 @@ export function Nav() {
 
           {/* Desktop links - Centered */}
           <div className="hidden lg:flex flex-1 justify-center items-center gap-10">
-            {['Home', 'Toolbox', 'Services', 'Work', 'About'].map((item) => (
+            {LINKS.map(({ label, href }) => (
               <a
-                key={item}
-                href={item === 'Home' ? '#hero' : item === 'Toolbox' ? '#tech-stack' : `#${item.toLowerCase().replace(/ /g, '-')}`}
+                key={label}
+                href={href}
                 className={`text-[15px] font-sans tracking-wide text-near-black/80 hover:text-black transition-colors ${focusRing}`}
               >
-                {item}
+                {label}
               </a>
             ))}
           </div>
@@ -84,14 +91,14 @@ export function Nav() {
         {/* Mobile dropdown */}
         {menuOpen && (
           <div className="absolute top-full left-0 right-0 mt-4 bg-white rounded-3xl p-6 flex flex-col gap-6 border border-gray-100 shadow-2xl z-10 w-full overflow-hidden">
-            {['Home', 'Toolbox', 'Services', 'Work', 'About'].map((item) => (
+            {LINKS.map(({ label, href }) => (
               <a
-                key={item}
-                href={item === 'Home' ? '#hero' : item === 'Toolbox' ? '#tech-stack' : `#${item.toLowerCase().replace(/ /g, '-')}`}
+                key={label}
+                href={href}
                 className={`text-lg text-near-black font-sans tracking-wide ${focusRing}`}
                 onClick={() => setMenuOpen(false)}
               >
-                {item}
+                {label}
               </a>
             ))}
             <a
