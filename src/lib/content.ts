@@ -24,60 +24,6 @@ export const hero = {
   ],
 }
 
-export const techStack = {
-  label: 'Our Toolbox',
-  headline: 'The reliable software that works silently in the background.',
-  tools: [
-    { 
-      name: 'Notion', 
-      logo: '/logos/transparent_notion.png', 
-      desc: 'A digital workspace where your computer automatically organizes all your important docs, notes, and tasks.',
-      bg: 'bg-[#F9F9F9]', // Subtle light gray
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'Airtable', 
-      logo: '/logos/transparent_airtable.png', 
-      desc: 'A smart, super-powered spreadsheet that keeps your whole team organized automatically.',
-      bg: 'bg-[#F0F6FF]', // Soft blue
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'WhatsApp & Telegram', 
-      logo: '/logos/transparent_whatsapp_telegram.png', 
-      desc: 'We build bots that text your customers back instantly, day or night.',
-      bg: 'bg-white',
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'Google Workspace', 
-      logo: '/logos/transparent_google-workspace.png', 
-      desc: 'We make your Google Docs and Sheets update themselves without you lifting a finger.',
-      bg: 'bg-white',
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'Slack', 
-      logo: '/logos/transparent_slack.png', 
-      desc: 'We automatically send important updates straight to your team chat.',
-      bg: 'bg-[#F8F5FF]', // Soft purple
-      span: 'md:col-span-1'
-    },
-    { 
-      name: 'Webhooks', 
-      logo: '/logos/transparent_webhook.png', 
-      desc: 'The secret technical wiring that connects any piece of software in the world.',
-      bg: 'bg-gray-50',
-      span: 'md:col-span-1'
-    },
-  ],
-  stats: [
-    { value: '100%', label: 'Custom Built', subtext: 'Made Just For You' },
-    { value: '24/7', label: 'Systems Running', subtext: 'It Never Sleeps' },
-    { value: '200+', label: 'Apps Connected', subtext: 'We Hook Into Anything' },
-  ]
-}
-
 export const services = {
   badge: 'What we do',
   title: 'Three programs.',
@@ -107,44 +53,6 @@ export const services = {
     },
   ] as { fn: string; icon: 'Workflow' | 'Bot' | 'Settings'; title: string; description: string; outcomes: string[] }[],
 }
-
-export const caseStudies = [
-  {
-    label: 'Our Work',
-    title: 'Automated Student Enrollment',
-    industry: 'Education',
-    problem: 'Staff members were wasting hours manually typing new student enrollments into the database and painstakingly building out their weekly class calendars by hand. This tedious work led to double-booked tutors and painful data entry errors.',
-    solution: "We built an invisible digital system that takes over the entire onboarding process. When a student signs up, the system instantly ensures the tutor isn't overbooked, logs the student, and automatically generates their exact schedule for the upcoming week.",
-    result: 'Class double-bookings dropped to 0%. The academy staff completely stopped managing weekly calendars by hand, permanently removing an incredibly boring task from their day.',
-    videoSrc: '/videos/N8nWorkflowMotion.mp4',
-    workflowImage: '/images/workflow_architecture.png',
-    tools: ['n8n', 'Airtable', 'Outlook'],
-    pdfUrl: '/pdfs/innovation_case_study.pdf',
-  },
-  {
-    label: 'Our Work',
-    title: 'Automated Document Generation',
-    industry: 'Government Contracting',
-    problem: 'Staff spent countless hours reading physical forms and repeatedly typing prices and project details into different documents by hand. This tedious work was extremely slow and easily caused costly math mistakes.',
-    solution: 'We built an intelligent system that acts exactly like a digital assistant. You simply show it a picture of your document or talk to it in a chat. It instantly reads the numbers out of the picture, makes sure the math is perfect, and automatically fills out all eight required forms for you.',
-    result: 'What used to take hours of manual typing now happens practically instantly. The business completely erased human errors and saved their staff from a very frustrating, boring task.',
-    videoSrc: '/videos/ProcurementMotion.mp4',
-    workflowImage: '/images/workflow_architecture.png', // Temporary placeholder
-    tools: ['n8n', 'AI Vision', 'Google Drive'],
-    pdfUrl: '/pdfs/procurement_case_study.pdf',
-  },
-  {
-    label: 'Our Work',
-    title: 'Coaching Automation Suite',
-    industry: 'Coaching & Consulting',
-    problem: 'Coaches were losing valuable hours every week to manual administrative tasks—from qualifying new leads and handling onboarding to the constant struggle of writing weekly marketing content.',
-    solution: 'We built a complete digital management system. It automatically evaluates and books incoming leads, instantly handles all new client onboarding, uses AI to flag clients who need help, and magically turns session transcripts into a week of social media posts.',
-    result: 'Coaches eliminated admin friction entirely. High-value leads are booked immediately, struggling clients are caught before they quit, and multi-platform marketing happens completely effortlessly.',
-    workflowImage: '/images/workflow_architecture.png', // Temporary placeholder
-    tools: ['n8n', 'OpenAI', 'Airtable', 'Google Drive', 'Notion'],
-    pdfUrl: '/pdfs/coaching_case_study.pdf',
-  }
-]
 
 export const testimonial = {
   quote: "They completely removed the most annoying part of our day. The boring computer work that used to take our highest-paid staff three hours physically typing now happens instantly by itself.",
