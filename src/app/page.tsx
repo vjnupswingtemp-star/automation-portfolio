@@ -1,5 +1,5 @@
 import { Nav } from '@/components/layout/Nav'
-import { Hero } from '@/components/sections/Hero'
+import { DeskHero } from '@/components/desk/DeskHero'
 import { TechStack } from '@/components/sections/TechStack'
 import { Services } from '@/components/sections/Services'
 import { CaseStudy } from '@/components/sections/CaseStudy'
@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        <Hero />
+        <DeskHero />
         <TechStack />
         <Services />
         <CaseStudy />
