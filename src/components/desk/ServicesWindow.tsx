@@ -7,7 +7,7 @@ const ICONS = { Workflow, Bot, Settings }
 /** "Three programs. All run by themselves." — the services as desktop programs. */
 export function ServicesWindow() {
   return (
-    <section id="services" data-task="programs" className="wsec scroll-mt-20">
+    <section id="services" data-task="programs" className="wsec scroll-mt-24">
       <DeskWindow title={services.window}>
         <DeskBadge>{services.badge}</DeskBadge>
         <h2 className="font-display">

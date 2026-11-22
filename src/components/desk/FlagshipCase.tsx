@@ -4,7 +4,7 @@ import { DeskBadge, DeskWindow } from './DeskWindow'
 /** Case file 01 — the fire & life-safety client (never named) and the automations built for them. */
 export function FlagshipCase() {
   return (
-    <section id="work" data-task="case_file_01" className="intro scroll-mt-20">
+    <section id="work" data-task="case_file_01" className="intro scroll-mt-24">
       <DeskWindow title={flagship.window}>
         <DeskBadge>{flagship.badge}</DeskBadge>
         <h2 className="font-display">

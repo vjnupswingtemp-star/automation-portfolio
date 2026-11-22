@@ -167,7 +167,7 @@ body {
 .desk-world .progress i b { position: absolute; inset: 0; background: var(--blue); transform-origin: left; transform: scaleX(0); }
 .desk-world .stage { position: relative; height: 100%; background: var(--soft); border-radius: 18px; display: grid; place-items: center; perspective: 1400px; overflow: hidden; }
 .desk-world .nodes { position: absolute; top: 14px; left: 14px; right: 14px; display: flex; align-items: center; z-index: 3; }
-.desk-world .node { flex: 0 0 auto; width: 64px; text-align: center; font-size: 10px; font-weight: 600; color: #777; }
+.desk-world .node { flex: 0 0 auto; width: 64px; text-align: center; font-size: 10px; font-weight: 600; color: #555; }
 .desk-world .node .dot { width: 36px; height: 36px; margin: 0 auto 5px; border-radius: 10px; background: #fff; border: 2px solid #d5dbd8; color: #aaa; display: grid; place-items: center; transition: all .35s; }
 .desk-world .node.lit { color: var(--ink); }
 .desk-world .node.lit .dot { border-color: var(--blue); background: var(--blue); box-shadow: 3px 3px 0 var(--ink); color: #fff; }
@@ -280,9 +280,9 @@ body {
 .desk-world .case .ind { font-size: 11px; color: #666; border: 1px solid #ccc; padding: 3px 9px; border-radius: 99px; align-self: start; }
 .desk-world .case h3 { font-size: 26px; font-weight: 800; line-height: 1.05; }
 .desk-world .ba { display: grid; gap: 8px; font-size: 13.5px; line-height: 1.5; color: #444; }
-.desk-world .ba span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #888; display: block; }
+.desk-world .ba span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #666; display: block; }
 .desk-world .res { margin-top: auto; background: var(--blue); color: #fff; border-radius: 10px; padding: 13px 15px; }
-.desk-world .res small { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.desk-world .res small { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 .desk-world .res strong { display: block; font-family: var(--font-bricolage), sans-serif; font-size: 26px; font-weight: 800; line-height: 1.05; }
 .desk-world .res .todo { color: #fff; border-color: #fff; }
 .desk-world .case-pdf { display: inline-flex; align-items: center; gap: 6px; align-self: start; font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
@@ -305,3 +305,7 @@ body {
   .desk-world .more-stage { padding: 11vh 0; }
   .desk-world .track { row-gap: 40px; }
 }
+
+/* Performance: skip style/layout/paint of the desktop sections until they near the viewport.
+   Pinned sections keep their explicit vh height; the intrinsic size covers the reduced-motion (auto) case. */
+#dive, #run, #more, .desk-world .wsec, .desk-world .intro { content-visibility: auto; contain-intrinsic-size: auto 900px; }
