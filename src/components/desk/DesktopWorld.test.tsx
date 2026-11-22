@@ -60,3 +60,17 @@ describe('Run 01 server markup', () => {
     expect(html).not.toContain(run01.result.text)
   })
 })
+
+describe('More runs server markup', () => {
+  it('renders four CD cases, three PDF links, one placeholder and the reduced-motion wrap', async () => {
+    const { MoreRuns } = await import('./MoreRuns')
+    const { runs } = await import('@/lib/content')
+    const html = renderToString(<MoreRuns />)
+    expect(html).toContain('id="more"')
+    expect(html).toContain('data-task="more_runs"')
+    for (const r of runs.items) expect(html).toContain(r.title)
+    expect(html.match(/href="\/pdfs\//g)).toHaveLength(3)
+    expect(html.match(/needs your real figure/g)).toHaveLength(1)
+    expect(html).toContain('motion-reduce:flex-wrap')
+  })
+})

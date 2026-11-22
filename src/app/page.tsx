@@ -5,6 +5,7 @@ import { DesktopShell } from '@/components/desk/DesktopShell'
 import { ServicesWindow } from '@/components/desk/ServicesWindow'
 import { FlagshipCase } from '@/components/desk/FlagshipCase'
 import { RunPartsFinder } from '@/components/desk/RunPartsFinder'
+import { MoreRuns } from '@/components/desk/MoreRuns'
 import { SceneLayer } from '@/components/three/SceneLayer'
 import { Testimonial } from '@/components/sections/Testimonial'
 import { About } from '@/components/sections/About'
@@ -26,6 +27,7 @@ export default function Home() {
             <ServicesWindow />
             <FlagshipCase />
             <RunPartsFinder />
+            <MoreRuns />
           </DesktopShell>
           {/* Old sections below are replaced in Phases 3–4. */}
           <Testimonial />

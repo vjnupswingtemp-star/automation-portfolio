@@ -267,3 +267,41 @@ body {
   .desk-world .stage { height: auto; min-height: 640px; }
   .desk-world .stamp, .desk-world .view, .desk-world .id, .desk-world .node .dot, .desk-world .row .p { transition: none; }
 }
+
+/* ---------- More runs: CD cases, horizontal scroll (ported from mockup v8) ---------- */
+.desk-world .more-stage { display: flex; flex-direction: column; justify-content: center; padding: 84px 0 46px; }
+.desk-world .more-head { padding: 0 6vw; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+.desk-world .more-head h2 { font-size: clamp(30px, 4.4vw, 56px); font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 2px 0 rgba(0,0,0,.25); }
+.desk-world .track { display: flex; gap: 54px; padding: 0 6vw; will-change: transform; }
+.desk-world .case { position: relative; flex: 0 0 min(400px, 80vw); max-width: 100%; }
+.desk-world .case .disc { position: absolute; right: -38px; top: 50%; width: 250px; height: 250px; margin-top: -125px; border-radius: 50%; z-index: 0; background: radial-gradient(circle, #fff 0 7%, #ddd 7% 9%, transparent 9% 100%), conic-gradient(#f6c1ff, #c1e3ff, #fff7c1, #c1ffd9, #ffc1d6, #d6c1ff, #f6c1ff); border: 1px solid rgba(0,0,0,.25); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+.desk-world .case .win { position: relative; z-index: 1; min-height: 400px; display: flex; flex-direction: column; }
+.desk-world .case .win > .body { padding: 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.desk-world .case .ind { font-size: 11px; color: #666; border: 1px solid #ccc; padding: 3px 9px; border-radius: 99px; align-self: start; }
+.desk-world .case h3 { font-size: 26px; font-weight: 800; line-height: 1.05; }
+.desk-world .ba { display: grid; gap: 8px; font-size: 13.5px; line-height: 1.5; color: #444; }
+.desk-world .ba span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #888; display: block; }
+.desk-world .res { margin-top: auto; background: var(--blue); color: #fff; border-radius: 10px; padding: 13px 15px; }
+.desk-world .res small { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.desk-world .res strong { display: block; font-family: var(--font-bricolage), sans-serif; font-size: 26px; font-weight: 800; line-height: 1.05; }
+.desk-world .res .todo { color: #fff; border-color: #fff; }
+.desk-world .case-pdf { display: inline-flex; align-items: center; gap: 6px; align-self: start; font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.desk-world .case-pdf:hover { color: #2a4fc0; }
+.desk-world .case-pdf:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+@media (max-width: 820px) {
+  .desk-world .more-stage { padding: 80px 0 56px; }
+  .desk-world .more-head { flex-direction: column; align-items: start; gap: 12px; margin-bottom: 22px; }
+  .desk-world .track { gap: 42px; }
+  .desk-world .case { flex-basis: 74vw; }
+  .desk-world .case .disc { width: 170px; height: 170px; margin-top: -85px; right: -28px; }
+  .desk-world .case .win { min-height: 0; }
+  .desk-world .case .win > .body { padding: 16px; gap: 10px; }
+  .desk-world .case h3 { font-size: 22px; }
+  .desk-world .ba { font-size: 12.5px; }
+  .desk-world .res strong { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desk-world .more-stage { padding: 11vh 0; }
+  .desk-world .track { row-gap: 40px; }
+}
