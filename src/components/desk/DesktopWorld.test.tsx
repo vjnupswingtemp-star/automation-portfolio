@@ -37,3 +37,26 @@ describe('monitor dive + desktop shell server markup', () => {
     expect(html).not.toContain('<button')
   })
 })
+
+describe('Run 01 server markup', () => {
+  it('lists all five steps, the placeholder result and the reduced-motion layout', async () => {
+    const { RunPartsFinder } = await import('./RunPartsFinder')
+    const { run01 } = await import('@/lib/content')
+    const html = renderToString(<RunPartsFinder />)
+    expect(html).toContain('id="run"')
+    expect(html).toContain('data-task="parts_finder.exe"')
+    for (const s of run01.steps) expect(html).toContain(s.title)
+    expect(html).toContain('needs your real figure')
+    expect(html).toContain('prices illustrative')
+    expect(html).toContain('motion-reduce:h-auto')
+    expect(html).toContain('data-stamp')
+  })
+
+  it('hides the phone illustration from screen readers but keeps the result out of it', async () => {
+    const { RunPhone } = await import('./RunPhone')
+    const { run01 } = await import('@/lib/content')
+    const html = renderToString(<RunPhone />)
+    expect(html).toContain('aria-hidden="true"')
+    expect(html).not.toContain(run01.result.text)
+  })
+})

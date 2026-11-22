@@ -150,3 +150,120 @@ body {
   .desk-world .progs { grid-template-columns: 1fr; gap: 14px; }
   .desk-world .prog { padding: 16px; }
 }
+
+/* ---------- Run 01: Parts Price Finder on a CSS-3D phone (ported from mockup v8) ---------- */
+.desk-world .run-stage { display: grid; place-items: center; padding: 92px 24px 58px; }
+.desk-world .run-stage > .win { width: min(1160px, 100%); height: min(calc(100svh - 150px), 700px); display: flex; flex-direction: column; }
+.desk-world .run-stage > .win > .body { flex: 1; display: grid; grid-template-columns: minmax(260px, 400px) 1fr; gap: 40px; align-items: center; padding: 26px 34px; min-height: 0; }
+.desk-world .run-label { font-size: 12px; color: var(--blue); }
+.desk-world .steps { position: relative; height: 280px; margin-top: 16px; list-style: none; }
+.desk-world .step { position: absolute; inset: 0; opacity: 0; transform: translateY(16px); transition: opacity .45s, transform .45s; }
+.desk-world .step.on { opacity: 1; transform: none; }
+.desk-world .step .n { font-family: var(--font-bitroad), monospace; font-size: 58px; color: var(--soft); -webkit-text-stroke: 1.5px var(--blue); line-height: 1; }
+.desk-world .step h3 { font-size: 31px; font-weight: 800; margin: 10px 0; line-height: 1.05; }
+.desk-world .step p { font-size: 16px; line-height: 1.6; color: #444; }
+.desk-world .progress { display: flex; gap: 6px; margin-top: 6px; }
+.desk-world .progress i { height: 4px; flex: 1; background: var(--soft); border-radius: 4px; overflow: hidden; position: relative; }
+.desk-world .progress i b { position: absolute; inset: 0; background: var(--blue); transform-origin: left; transform: scaleX(0); }
+.desk-world .stage { position: relative; height: 100%; background: var(--soft); border-radius: 18px; display: grid; place-items: center; perspective: 1400px; overflow: hidden; }
+.desk-world .nodes { position: absolute; top: 14px; left: 14px; right: 14px; display: flex; align-items: center; z-index: 3; }
+.desk-world .node { flex: 0 0 auto; width: 64px; text-align: center; font-size: 10px; font-weight: 600; color: #777; }
+.desk-world .node .dot { width: 36px; height: 36px; margin: 0 auto 5px; border-radius: 10px; background: #fff; border: 2px solid #d5dbd8; color: #aaa; display: grid; place-items: center; transition: all .35s; }
+.desk-world .node.lit { color: var(--ink); }
+.desk-world .node.lit .dot { border-color: var(--blue); background: var(--blue); box-shadow: 3px 3px 0 var(--ink); color: #fff; }
+.desk-world .wire { flex: 1; height: 3px; background: #d5dbd8; position: relative; margin-bottom: 18px; }
+.desk-world .wire b { position: absolute; inset: 0; background: var(--blue); transform-origin: left; transform: scaleX(0); }
+
+.desk-world .phone3d { --w: 236px; --h: 482px; position: relative; width: var(--w); height: var(--h); transform-style: preserve-3d; will-change: transform; margin-top: 50px; }
+.desk-world .phone3d .ly, .desk-world .phone3d .front, .desk-world .phone3d .backf { position: absolute; inset: 0; border-radius: 40px; }
+.desk-world .phone3d .ly { background: linear-gradient(90deg, #7c7f86, #d9dbe0 18%, #8d9097 50%, #e3e5ea 82%, #74777e); }
+.desk-world .phone3d .front { background: #0b0b0d; padding: 9px; box-shadow: inset 0 0 0 2px #5d6067, inset 0 0 0 4px #1a1a1d; }
+.desk-world .phone3d .backf { background: linear-gradient(160deg, #3b3e45, #1c1d21); transform: translateZ(-15px) rotateY(180deg); }
+.desk-world .phone3d .backf::before { content: ""; position: absolute; left: 18px; top: 18px; width: 86px; height: 86px; border-radius: 24px; background: #2a2c31; box-shadow: inset 0 0 0 2px #45484f; }
+.desk-world .pscreen { position: relative; width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: #fff; }
+.desk-world .island { position: absolute; top: 9px; left: 50%; width: 74px; height: 21px; border-radius: 12px; background: #000; transform: translateX(-50%); z-index: 6; }
+.desk-world .glare { position: absolute; inset: 0; z-index: 7; pointer-events: none; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.22) 45%, transparent 58%); background-size: 260% 100%; }
+.desk-world .pshadow { position: absolute; left: 50%; bottom: 6%; width: 230px; height: 26px; background: radial-gradient(rgba(0,0,0,.28), transparent 70%); transform: translateX(-50%); }
+.desk-world .view { position: absolute; inset: 0; opacity: 0; transition: opacity .4s; padding: 42px 14px 14px; font-size: 12px; }
+.desk-world .view.on { opacity: 1; }
+.desk-world .v0 { background: #f3f3f5; }
+.desk-world .notif { background: #fff; border-radius: 12px; padding: 9px 11px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.desk-world .notif b { display: block; font-size: 11px; }
+.desk-world .notif span { color: #777; font-size: 11px; }
+.desk-world .timer { position: absolute; left: 0; right: 0; bottom: 22px; text-align: center; }
+.desk-world .timer .pix { font-size: 34px; color: #E2483D; }
+.desk-world .timer small { display: block; font-size: 11px; color: var(--muted); }
+.desk-world .v1 { background: #1d2026; padding: 0; }
+.desk-world .part { position: absolute; left: 50%; top: 44%; width: 110px; height: 110px; transform: translate(-50%, -50%); }
+.desk-world .part .bd { position: absolute; left: 15px; top: 30px; width: 80px; height: 50px; background: #9aa3ad; border-radius: 8px; }
+.desk-world .part .c1, .desk-world .part .c2 { position: absolute; top: 42px; width: 22px; height: 26px; background: #7d8690; border-radius: 4px; }
+.desk-world .part .c1 { left: 0; }
+.desk-world .part .c2 { right: 0; }
+.desk-world .part .knob { position: absolute; left: 44px; top: 6px; width: 22px; height: 26px; background: var(--blue); border-radius: 5px 5px 2px 2px; }
+.desk-world .corner { position: absolute; width: 24px; height: 24px; border: 3px solid #fff; }
+.desk-world .corner.a { left: 30px; top: 110px; border-right: 0; border-bottom: 0; }
+.desk-world .corner.b { right: 30px; top: 110px; border-left: 0; border-bottom: 0; }
+.desk-world .corner.c { left: 30px; top: 290px; border-right: 0; border-top: 0; }
+.desk-world .corner.d { right: 30px; top: 290px; border-left: 0; border-top: 0; }
+.desk-world .scan { position: absolute; left: 24px; right: 24px; height: 3px; background: #5BE3A0; box-shadow: 0 0 18px #5BE3A0; top: 110px; opacity: 0; }
+.desk-world .shutter { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 4; }
+.desk-world .shbtn { position: absolute; left: 50%; bottom: 22px; width: 54px; height: 54px; border-radius: 50%; border: 4px solid #fff; transform: translateX(-50%); }
+.desk-world .ids { position: absolute; left: 12px; right: 12px; bottom: 14px; display: grid; gap: 6px; z-index: 3; }
+.desk-world .id { background: rgba(255,255,255,.95); border-radius: 10px; padding: 8px 10px; font-size: 12px; opacity: 0; transform: translateY(8px); transition: all .3s; }
+.desk-world .id.on { opacity: 1; transform: none; }
+.desk-world .id b { color: var(--blue); }
+.desk-world .v3 h4, .desk-world .v4 h4 { font-family: var(--font-bricolage), sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.desk-world .row { display: grid; grid-template-columns: 64px 1fr 62px; align-items: center; gap: 6px; font-size: 11px; margin-bottom: 13px; }
+.desk-world .pbar { height: 10px; background: var(--soft); border-radius: 8px; overflow: hidden; }
+.desk-world .pbar b { display: block; height: 100%; background: var(--blue); border-radius: 8px; width: 0; }
+.desk-world .row .p { font-weight: 600; text-align: right; opacity: 0; transition: opacity .3s; }
+.desk-world .row.won .p { opacity: 1; }
+.desk-world .illus { font-size: 10px; color: #999; }
+.desk-world .li { display: flex; justify-content: space-between; border-bottom: 1px dashed #e2e2e2; padding: 9px 0; font-size: 12px; }
+.desk-world .sent { margin-top: 14px; background: var(--blue); color: #fff; border-radius: 10px; padding: 9px; text-align: center; font-weight: 600; }
+.desk-world .stamp { position: absolute; right: 5%; bottom: 8%; z-index: 8; border: 4px solid var(--blue); color: var(--blue); padding: 10px 16px; transform: rotate(-8deg) scale(2.2); opacity: 0; transition: transform .35s cubic-bezier(.2,1.6,.4,1), opacity .2s; background: rgba(255,255,255,.94); text-align: center; }
+.desk-world .stamp.on { transform: rotate(-8deg) scale(1); opacity: 1; }
+.desk-world .stamp .pix { font-size: 12px; }
+.desk-world .stamp strong { display: block; font-family: var(--font-bricolage), sans-serif; font-size: 24px; font-weight: 800; line-height: 1.1; margin-top: 4px; }
+.desk-world .todo { display: inline-block; margin-top: 6px; font-size: 10px; border: 1px dashed #E2483D; color: #E2483D; padding: 2px 6px; border-radius: 4px; }
+
+@media (max-width: 820px) {
+  .desk-world .run-stage { padding: 84px 10px 56px; place-items: stretch; }
+  .desk-world .run-stage > .win { height: 100%; }
+  .desk-world .run-stage > .win > .body { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 8px; padding: 12px; }
+  .desk-world .steps { height: 112px; margin-top: 8px; }
+  .desk-world .step .n { display: none; }
+  .desk-world .step h3 { font-size: 20px; margin: 0 0 4px; }
+  .desk-world .step p { font-size: 13px; line-height: 1.45; }
+  .desk-world .nodes { top: 8px; left: 8px; right: 8px; }
+  .desk-world .node { width: 48px; font-size: 9px; }
+  .desk-world .node .dot { width: 30px; height: 30px; border-radius: 8px; }
+  .desk-world .node .dot svg { width: 14px; height: 14px; }
+  .desk-world .wire { margin-bottom: 16px; }
+  .desk-world .phone3d { zoom: .74; margin-top: 76px; }
+  .desk-world .pshadow { width: 170px; bottom: 2%; }
+  .desk-world .stamp { right: 6px; bottom: 6px; padding: 6px 10px; border-width: 3px; }
+  .desk-world .stamp strong { font-size: 16px; }
+  .desk-world .stamp .pix { font-size: 10px; }
+}
+
+/* Short screens: shrink the phone so it, the step text and the stamp fit the pinned window. */
+@media (min-width: 821px) and (max-height: 860px) {
+  .desk-world .phone3d { zoom: .84; margin-top: 56px; }
+}
+@media (max-width: 820px) and (max-height: 740px) {
+  .desk-world .steps { height: 104px; }
+  .desk-world .phone3d { zoom: .5; margin-top: 58px; }
+  .desk-world .pshadow { width: 120px; }
+}
+
+/* Reduced motion: no pinning; every step listed; the phone shows its final view (spec §6). */
+@media (prefers-reduced-motion: reduce) {
+  .desk-world .run-stage { padding: 11vh 16px; }
+  .desk-world .run-stage > .win { height: auto; }
+  .desk-world .run-stage > .win > .body { align-items: start; }
+  .desk-world .steps { height: auto; }
+  .desk-world .step { position: static; opacity: 1; transform: none; margin-bottom: 22px; transition: none; }
+  .desk-world .stage { height: auto; min-height: 640px; }
+  .desk-world .stamp, .desk-world .view, .desk-world .id, .desk-world .node .dot, .desk-world .row .p { transition: none; }
+}

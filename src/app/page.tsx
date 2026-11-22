@@ -4,6 +4,7 @@ import { MonitorDive } from '@/components/desk/MonitorDive'
 import { DesktopShell } from '@/components/desk/DesktopShell'
 import { ServicesWindow } from '@/components/desk/ServicesWindow'
 import { FlagshipCase } from '@/components/desk/FlagshipCase'
+import { RunPartsFinder } from '@/components/desk/RunPartsFinder'
 import { SceneLayer } from '@/components/three/SceneLayer'
 import { Testimonial } from '@/components/sections/Testimonial'
 import { About } from '@/components/sections/About'
@@ -24,6 +25,7 @@ export default function Home() {
           <DesktopShell>
             <ServicesWindow />
             <FlagshipCase />
+            <RunPartsFinder />
           </DesktopShell>
           {/* Old sections below are replaced in Phases 3–4. */}
           <Testimonial />
