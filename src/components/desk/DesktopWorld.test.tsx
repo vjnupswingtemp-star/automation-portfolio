@@ -39,14 +39,14 @@ describe('monitor dive + desktop shell server markup', () => {
 })
 
 describe('Run 01 server markup', () => {
-  it('lists all five steps, the placeholder result and the reduced-motion layout', async () => {
+  it('lists all five steps, the result and the reduced-motion layout', async () => {
     const { RunPartsFinder } = await import('./RunPartsFinder')
     const { run01 } = await import('@/lib/content')
     const html = renderToString(<RunPartsFinder />)
     expect(html).toContain('id="run"')
     expect(html).toContain('data-task="parts_finder.exe"')
     for (const s of run01.steps) expect(html).toContain(s.title)
-    expect(html).toContain('needs your real figure')
+    expect(html).not.toContain('needs your real figure')
     expect(html).toContain('prices illustrative')
     expect(html).toContain('motion-reduce:h-auto')
     expect(html).toContain('data-stamp')
@@ -62,7 +62,7 @@ describe('Run 01 server markup', () => {
 })
 
 describe('More runs server markup', () => {
-  it('renders four CD cases, three PDF links, one placeholder and the reduced-motion wrap', async () => {
+  it('renders four CD cases, three PDF links, no placeholders and the reduced-motion wrap', async () => {
     const { MoreRuns } = await import('./MoreRuns')
     const { runs } = await import('@/lib/content')
     const html = renderToString(<MoreRuns />)
@@ -70,7 +70,8 @@ describe('More runs server markup', () => {
     expect(html).toContain('data-task="more_runs"')
     for (const r of runs.items) expect(html).toContain(r.title)
     expect(html.match(/href="\/pdfs\//g)).toHaveLength(3)
-    expect(html.match(/needs your real figure/g)).toHaveLength(1)
+    expect(html).not.toContain('needs your real figure')
+    expect(html).toContain('38 work orders in 4 weeks')
     expect(html).toContain('motion-reduce:flex-wrap')
   })
 })

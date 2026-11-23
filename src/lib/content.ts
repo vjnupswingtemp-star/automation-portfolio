@@ -185,8 +185,8 @@ export const run01 = {
     sent: 'Sent to the office inbox',
   },
   resultLabel: 'Result',
-  // "1 min" in the mockup was never confirmed — both numbers wait for Caio.
-  result: { text: '__ min → __ min', real: false } as RunResult,
+  // No measured time saving (log idle since 2026-08-04, no orders marked) — state what it does, not a number.
+  result: { text: 'Photo → top 3 prices', real: true } as RunResult,
 }
 
 export const runs = {
@@ -201,7 +201,8 @@ export const runs = {
       title: 'Work Order Intake',
       before: 'Work orders from national accounts arrive as long PDFs. Someone retypes each one.',
       after: 'AI reads each order, flags anything over the spending limit, and drafts the estimate.',
-      result: { text: '__ hrs saved / week', real: false },
+      // From the live intake log: 38 real approvals, 2026-10-27 to 2026-11-19 (tests excluded).
+      result: { text: '38 work orders in 4 weeks', real: true },
     },
     {
       file: 'run_03.cd',
