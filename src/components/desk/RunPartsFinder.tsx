@@ -1,12 +1,12 @@
 'use client'
 
 import { Fragment, useCallback, useRef } from 'react'
-import { useReducedMotion } from 'framer-motion'
 import { Camera, Cpu, Mail, Search } from 'lucide-react'
 import { desktop, run01 } from '@/lib/content'
 import { sectionProgress } from '@/lib/desk/motion'
 import { runState } from '@/lib/desk/desktopTimeline'
 import { useScrollFrame } from '@/lib/desk/useScrollFrame'
+import { useStaticLayout } from '@/lib/desk/useStaticLayout'
 import { DeskWindow } from './DeskWindow'
 import { RunPhone, type RunPhoneHandle } from './RunPhone'
 
@@ -14,11 +14,11 @@ const NODE_ICONS = [Camera, Cpu, Search, Mail]
 
 /**
  * Run 01 — Parts Price Finder, pinned ~5 screens: five steps on the left, a node strip and a CSS-3D phone
- * playing each step on the right, then the RESULT stamp. With reduced motion: not pinned, every step
- * listed, the phone on its final view.
+ * playing each step on the right, then the RESULT stamp. With reduced motion or a phone held sideways: not pinned,
+ * every step listed, the phone on its final view.
  */
 export function RunPartsFinder() {
-  const reduced = useReducedMotion() === true
+  const unpinned = useStaticLayout()
   const sectionRef = useRef<HTMLElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const stampRef = useRef<HTMLDivElement>(null)
@@ -32,7 +32,7 @@ export function RunPartsFinder() {
     const section = sectionRef.current
     if (!section) return
     const vh = stageRef.current?.clientHeight || window.innerHeight
-    const p = reduced ? 1 : sectionProgress(section.getBoundingClientRect().top, section.offsetHeight, vh)
+    const p = unpinned ? 1 : sectionProgress(section.getBoundingClientRect().top, section.offsetHeight, vh)
     const s = runState(p)
     stepRefs.current.forEach((el, i) => el?.classList.toggle('on', i === s.idx))
     barRefs.current.forEach((el, i) => {
@@ -44,9 +44,9 @@ export function RunPartsFinder() {
     })
     stampRef.current?.classList.toggle('on', s.stamp)
     phoneRef.current?.apply(s)
-  }, [reduced])
+  }, [unpinned])
 
-  useScrollFrame(frame, !reduced)
+  useScrollFrame(frame, !unpinned)
 
   return (
     <section

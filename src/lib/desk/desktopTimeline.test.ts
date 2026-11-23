@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { activeTask, diveTransform, moreOffset, runState } from './desktopTimeline'
+import { activeTask, diveTransform, isShortLandscape, moreOffset, moreProgressFor, runState } from './desktopTimeline'
 
 const vp = { w: 1000, h: 800 }
 
@@ -72,5 +72,36 @@ describe('activeTask', () => {
   })
   it('returns null when no section is under the line', () => {
     expect(activeTask(secs, 2000)).toBeNull()
+  })
+})
+
+describe('moreProgressFor', () => {
+  // Inverse of moreOffset: the progress at which the track sits at a given offset (keyboard focus on a case).
+  it('round-trips through moreOffset', () => {
+    for (const p of [0, 0.2, 0.5, 0.8, 1]) {
+      expect(moreProgressFor(moreOffset(p, 2000, 1000), 2000, 1000)).toBeCloseTo(p, 3)
+    }
+  })
+  it('clamps offsets beyond the track ends', () => {
+    expect(moreProgressFor(500, 2000, 1000)).toBe(0)
+    expect(moreProgressFor(-5000, 2000, 1000)).toBe(1)
+  })
+  it('returns 0 when the track fits the screen', () => {
+    expect(moreProgressFor(-100, 800, 1000)).toBe(0)
+  })
+})
+
+describe('isShortLandscape', () => {
+  // Phones held sideways: too short to pin Run 01 / the CD cases (matches SHORT_LANDSCAPE_QUERY).
+  it('is true for wide, short viewports', () => {
+    expect(isShortLandscape(844, 390)).toBe(true)
+    expect(isShortLandscape(932, 430)).toBe(true)
+    expect(isShortLandscape(821, 520)).toBe(true)
+  })
+  it('is false for phones in portrait and normal desktops', () => {
+    expect(isShortLandscape(390, 844)).toBe(false)
+    expect(isShortLandscape(820, 400)).toBe(false)
+    expect(isShortLandscape(1280, 720)).toBe(false)
+    expect(isShortLandscape(1366, 521)).toBe(false)
   })
 })

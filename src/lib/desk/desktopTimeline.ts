@@ -84,3 +84,27 @@ export function activeTask(
 ): string | null {
   return sections.find((s) => s.top <= mid && mid < s.bottom)?.task ?? null
 }
+
+/**
+ * Inverse of `moreOffset`: the progress at which the track sits at `offset` (clamped to the track's range).
+ * Used to scroll the page so a keyboard-focused CD case is on screen. Bisection, since `ease` has no simple inverse.
+ */
+export function moreProgressFor(offset: number, trackScrollW: number, vw: number): number {
+  const span = Math.max(0, trackScrollW - vw)
+  if (span === 0) return 0
+  const target = clamp(-offset / span)
+  let lo = 0
+  let hi = 1
+  for (let i = 0; i < 30; i++) {
+    const mid = (lo + hi) / 2
+    if (ease(mid) < target) lo = mid
+    else hi = mid
+  }
+  return target === 0 ? 0 : target === 1 ? 1 : (lo + hi) / 2
+}
+
+/** Phones held sideways are too short to pin Run 01 / the CD cases; they get the unpinned layout. */
+export const SHORT_LANDSCAPE_QUERY = '(min-width: 821px) and (max-height: 520px)'
+export function isShortLandscape(w: number, h: number): boolean {
+  return w >= 821 && h <= 520
+}

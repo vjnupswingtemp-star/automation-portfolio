@@ -1,20 +1,20 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
-import { useReducedMotion } from 'framer-motion'
+import { useCallback, useRef, type FocusEvent } from 'react'
 import { FileText } from 'lucide-react'
 import { desktop, runs } from '@/lib/content'
 import { sectionProgress } from '@/lib/desk/motion'
-import { moreOffset } from '@/lib/desk/desktopTimeline'
+import { moreOffset, moreProgressFor } from '@/lib/desk/desktopTimeline'
 import { useScrollFrame } from '@/lib/desk/useScrollFrame'
+import { useStaticLayout } from '@/lib/desk/useStaticLayout'
 import { DeskBadge, DeskWindow } from './DeskWindow'
 
 /**
  * Runs 02–05 as CD cases that slide sideways while the section is pinned.
- * With reduced motion: not pinned, the cases wrap into rows.
+ * With reduced motion or a phone held sideways: not pinned, the cases wrap into rows.
  */
 export function MoreRuns() {
-  const reduced = useReducedMotion() === true
+  const unpinned = useStaticLayout()
   const sectionRef = useRef<HTMLElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
@@ -24,11 +24,28 @@ export function MoreRuns() {
     const track = trackRef.current
     if (!section || !track) return
     const vh = stageRef.current?.clientHeight || window.innerHeight
-    const p = reduced ? 0 : sectionProgress(section.getBoundingClientRect().top, section.offsetHeight, vh)
-    track.style.transform = reduced ? '' : `translateX(${moreOffset(p, track.scrollWidth, window.innerWidth)}px)`
-  }, [reduced])
+    const p = unpinned ? 0 : sectionProgress(section.getBoundingClientRect().top, section.offsetHeight, vh)
+    track.style.transform = unpinned ? '' : `translateX(${moreOffset(p, track.scrollWidth, window.innerWidth)}px)`
+  }, [unpinned])
 
-  useScrollFrame(frame, !reduced)
+  useScrollFrame(frame, !unpinned)
+
+  // Keyboard / screen-reader focus on an off-screen case: scroll the page to the point where that case is in view
+  // (the clipped stage can't scroll sideways itself).
+  const onFocus = useCallback(
+    (e: FocusEvent<HTMLDivElement>) => {
+      const section = sectionRef.current
+      const track = trackRef.current
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.case')
+      if (unpinned || !section || !track || !card) return
+      const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0
+      const p = moreProgressFor(-(card.offsetLeft - pad), track.scrollWidth, window.innerWidth)
+      const vh = stageRef.current?.clientHeight || window.innerHeight
+      const top = section.getBoundingClientRect().top + window.scrollY + p * Math.max(0, section.offsetHeight - vh)
+      window.scrollTo({ top, behavior: 'instant' as ScrollBehavior })
+    },
+    [unpinned],
+  )
 
   return (
     <section
@@ -39,7 +56,7 @@ export function MoreRuns() {
     >
       <div
         ref={stageRef}
-        className="more-stage sticky top-0 h-[100svh] overflow-hidden motion-reduce:relative motion-reduce:h-auto"
+        className="more-stage sticky top-0 h-[100svh] overflow-clip motion-reduce:relative motion-reduce:h-auto"
       >
         <div className="more-head">
           <h2 className="font-display">{runs.title}</h2>
@@ -47,6 +64,7 @@ export function MoreRuns() {
         </div>
         <div
           ref={trackRef}
+          onFocus={onFocus}
           role="list"
           className="track motion-reduce:flex-wrap motion-reduce:justify-center"
         >
